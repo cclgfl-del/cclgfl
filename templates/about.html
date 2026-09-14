@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}About · {{ cfg.blog_name }}{% endblock %}
+
+{% block main %}
+<header class="page-head wrap">
+  <div>
+    <p class="kicker">About</p>
+    <h1>The Centre</h1>
+  </div>
+  <p class="page-head__aside">{{ cfg.university }}</p>
+</header>
+
+<div class="wrap">
+  <section class="dept" aria-labelledby="d-centre">
+    <h2 class="dept__label" id="d-centre">{{ cfg.centre }}</h2>
+    <div class="dept__body">
+      {% for para in cfg.about %}
+      <p{% if loop.first %} class="dept__lede"{% endif %}>{{ para | trim }}</p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="dept" aria-labelledby="d-people">
+    <h2 class="dept__label" id="d-people">Leadership</h2>
+    <div class="dept__body">
+      <ul class="people">
+        {% for p in cfg.people %}
+        <li class="person">
+          <img src="{{ asset('img/' ~ p.photo) }}" alt="{{ p.name }}" width="400" height="500" loading="lazy">
+          <p class="person__name">{{ p.name }}</p>
+          <p class="person__role">{{ p.role }}, {{ cfg.centre_short }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <section class="dept" aria-labelledby="d-blog">
+    <h2 class="dept__label" id="d-blog">The blog</h2>
+    <div class="dept__body">
+      <p>The {{ cfg.blog_name }} publishes short analysis of contemporary developments in corporate law, corporate governance, securities and financial laws, mergers and acquisitions, insolvency and restructuring, corporate finance and allied areas. It invites submissions from students, academicians and practitioners.</p>
+      <p><a class="btn" href="{{ url('/submit/') }}">Submission guidelines <span class="arr" aria-hidden="true">→</span></a></p>
+    </div>
+  </section>
+
+  <section class="dept" aria-labelledby="d-journal">
+    <h2 class="dept__label" id="d-journal">The journal</h2>
+    <div class="dept__body">
+      <p>The Centre also publishes the <a href="{{ cfg.journal.url }}">{{ cfg.journal.name }}</a>, its peer-reviewed flagship commercial law journal. {{ cfg.journal.blurb }}</p>
+    </div>
+  </section>
+
+  <section class="dept" aria-labelledby="d-contact">
+    <h2 class="dept__label" id="d-contact">Contact</h2>
+    <div class="dept__body">
+      <p><a href="mailto:{{ cfg.email }}">{{ cfg.email }}</a></p>
+      <address>{{ cfg.centre }}<br>{{ cfg.university }}<br>{{ cfg.address }}</address>
+    </div>
+  </section>
+</div>
+{% endblock %}

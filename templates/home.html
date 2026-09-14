@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+
+{% block header %}
+<header class="nameplate">
+  <div class="wrap">
+    <div class="nameplate__row">
+      <a class="nameplate__brand" href="{{ url('/') }}">
+        <img class="nameplate__seal" src="{{ asset('img/seal.png') }}"
+             alt="Seal of the {{ cfg.centre }}" width="104" height="104">
+        <h1 class="wordmark wordmark--lg"><span class="wm-a">{{ cfg.centre_short }}</span><span class="wm-b">Blog</span></h1>
+      </a>
+      <div class="nameplate__aside">
+        <p class="nameplate__tag">Commentary on corporate law, governance and financial regulation</p>
+        {% include "partials/tools.html" %}
+      </div>
+    </div>
+  </div>
+  <div class="sections">
+    <div class="wrap sections__in">
+      <nav class="sections__subjects" aria-label="Subjects">
+        <a href="{{ url('/') }}" aria-current="page">Latest</a>
+        {% for c in categories %}
+        <a href="{{ url('/category/' ~ c.slug ~ '/') }}">{{ c.short or c.name }}</a>
+        {% endfor %}
+      </nav>
+      {% include "partials/nav.html" %}
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block main %}
+
+{% if lead %}
+{# ── lead ─────────────────────────────────────────────────────────────── #}
+<section class="lead wrap" aria-labelledby="lead-title">
+  <div class="lead__text">
+    <p class="kicker">
+      <a href="{{ url('/category/' ~ lead.category.slug ~ '/') }}">{{ lead.category.name }}</a>
+      <time datetime="{{ lead.date | iso }}">{{ lead.date | longdate }}</time>
+    </p>
+    <h2 class="lead__title" id="lead-title"><a href="{{ url('/post/' ~ lead.slug ~ '/') }}">{{ lead.title }}</a></h2>
+    <p class="lead__stand">{{ lead.standfirst }}</p>
+    <p class="byline">
+      {% if lead.byline %}<span class="byline__who">{{ lead.byline }}</span>{% endif %}
+      <span class="byline__meta">{{ m.meta_line(lead) }}</span>
+    </p>
+  </div>
+  {{ m.plate(lead.category.slug, "medallion", "lead__plate", url('/post/' ~ lead.slug ~ '/')) }}
+</section>
+
+{% if secondary %}
+<section class="second wrap" aria-label="Also new">
+  {% for p in secondary %}
+  <article class="second__item">
+    <p class="kicker">
+      <a href="{{ url('/category/' ~ p.category.slug ~ '/') }}">{{ p.category.name }}</a>
+      <time datetime="{{ p.date | iso }}">{{ p.date | longdate }}</time>
+    </p>
+    <h2 class="second__title"><a href="{{ url('/post/' ~ p.slug ~ '/') }}">{{ p.title }}</a></h2>
+    <p class="second__stand">{{ p.standfirst }}</p>
+    <p class="byline">
+      {% if p.byline %}<span class="byline__who">{{ p.byline }}</span>{% endif %}
+      <span class="byline__meta">{{ m.meta_line(p) }}</span>
+    </p>
+  </article>
+  {% endfor %}
+</section>
+{% endif %}
+
+{% if recent %}
+<section class="ledger wrap" aria-labelledby="recent-h">
+  <header class="rubric">
+    <h2 id="recent-h">Recent</h2>
+    <a href="{{ url('/posts/') }}">All {{ total }} posts <span aria-hidden="true">→</span></a>
+  </header>
+  <ol class="rows">
+    {% for p in recent %}{{ m.row(p) }}{% endfor %}
+  </ol>
+</section>
+{% endif %}
+
+{% else %}
+{# ── empty state: before the first post is published ─────────────────── #}
+<section class="lead lead--empty wrap" aria-labelledby="lead-title">
+  <div class="lead__text">
+    <p class="kicker">The {{ cfg.blog_name }}</p>
+    <h2 class="lead__title" id="lead-title">Commentary on corporate law, governance and financial regulation</h2>
+    <p class="lead__stand">Short, rigorous analysis of developments in company law, securities, banking, insolvency and competition, from students, academicians and practitioners. The first posts are in preparation.</p>
+    <p class="lead__actions">
+      <a class="btn btn--solid" href="{{ url('/submit/') }}">Write for the blog <span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn" href="{{ url('/about/') }}">About the Centre</a>
+    </p>
+  </div>
+  {{ m.plate(categories[0].slug, "medallion", "lead__plate") }}
+</section>
+{% endif %}
+
+{# ── subjects ──────────────────────────────────────────────────────────── #}
+<section class="subjects wrap" aria-labelledby="subjects-h">
+  <header class="rubric">
+    <h2 id="subjects-h">By subject</h2>
+  </header>
+  <ul class="subjects__grid">
+    {% for c in categories %}
+    <li>
+      <a class="subject" href="{{ url('/category/' ~ c.slug ~ '/') }}">
+        <span class="subject__mark" aria-hidden="true" style="-webkit-mask-image:url('{{ pattern(c.slug, 'mark') }}');mask-image:url('{{ pattern(c.slug, 'mark') }}')"></span>
+        <span class="subject__body">
+          <span class="subject__name">{{ c.name }}</span>
+          <span class="subject__blurb">{{ c.blurb }}</span>
+          {% if total %}<span class="subject__count">{{ category_counts[c.slug] }} {{ 'post' if category_counts[c.slug] == 1 else 'posts' }}</span>{% endif %}
+        </span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+{# ── the journal ───────────────────────────────────────────────────────── #}
+<section class="band" aria-labelledby="journal-h">
+  {{ m.plate(categories[4].slug, "band", "band__plate") }}
+  <div class="wrap band__in">
+    <p class="kicker kicker--band">From the Centre</p>
+    <h2 id="journal-h">{{ cfg.journal.name }}</h2>
+    <p>{{ cfg.journal.blurb }}</p>
+    <a class="btn btn--band" href="{{ cfg.journal.url }}">Read {{ cfg.journal.volume }} <span class="arr" aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+{# ── invitation ───────────────────────────────────────────────────────── #}
+<section class="invite wrap" aria-labelledby="invite-h">
+  <div>
+    <h2 id="invite-h">Write for the {{ cfg.blog_name }}</h2>
+    <p>We publish analysis of {{ "{:,}".format(cfg.guidelines.words_min) }}–{{ "{:,}".format(cfg.guidelines.words_max) }} words, cited by hyperlink, on corporate law, governance and financial regulation. Decisions within {{ cfg.guidelines.decision_days }} days.</p>
+  </div>
+  <a class="btn" href="{{ url('/submit/') }}">Submission guidelines <span class="arr" aria-hidden="true">→</span></a>
+</section>
+
+{% endblock %}

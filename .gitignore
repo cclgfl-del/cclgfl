@@ -1,0 +1,18 @@
+# Previews of accepted, unpublished posts are built during each workflow run
+# and must never be committed: this repository is public.
+content/previews/
+
+# build output and caches
+_site/
+.cache/
+__pycache__/
+*.pyc
+
+# OneDrive and Windows
+desktop.ini
+Thumbs.db
+
+# editors
+.vscode/
+.idea/
+.DS_Store

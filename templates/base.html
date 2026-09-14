@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-IN" data-base="{{ cfg.base }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ cfg.blog_name }} · {{ cfg.centre_short }}, {{ cfg.university }}{% endblock %}</title>
+<meta name="description" content="{% block description %}{{ cfg.description | trim }}{% endblock %}">
+<link rel="canonical" href="{{ abs_url(path) }}">
+{% block meta %}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ cfg.blog_name }}">
+<meta property="og:title" content="{{ self.title() }}">
+<meta property="og:description" content="{{ cfg.description | trim }}">
+<meta property="og:url" content="{{ abs_url(path) }}">
+{% endblock %}
+<meta name="theme-color" content="#3D1218">
+<link rel="icon" href="{{ asset('img/favicon.png') }}" type="image/png">
+<link rel="apple-touch-icon" href="{{ asset('img/apple-touch-icon.png') }}">
+<link rel="alternate" type="application/rss+xml" title="{{ cfg.blog_name }}" href="{{ url('/feed.xml') }}">
+<link rel="preload" href="{{ url('/static/fonts/source-serif-4-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ url('/static/fonts/cormorant-garamond-600.woff2') }}" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ asset('css/site.css') }}">
+<script>
+/* Apply saved reading settings before first paint, so there is no flash of
+   the wrong theme. Storage can throw (private mode); the defaults then hold. */
+(function(){try{var s=JSON.parse(localStorage.getItem('cclgfl-reader')||'{}'),r=document.documentElement;
+if(s.theme&&s.theme!=='auto')r.setAttribute('data-theme',s.theme);
+if(s.size)r.style.setProperty('--read-scale',s.size);
+if(s.notes==='text')r.setAttribute('data-notes','text');}catch(e){}})();
+</script>
+</head>
+<body class="page-{{ page }}">
+<a class="skip" href="#main">Skip to content</a>
+{% if specimens_build %}
+<p class="review-flag">Review build · includes specimen posts that are not published</p>
+{% endif %}
+
+<div class="strip">
+  <div class="wrap strip__in">
+    <a href="https://nludelhi.ac.in">{{ cfg.university }}</a>
+    <span class="strip__centre">{{ cfg.centre }}</span>
+  </div>
+</div>
+
+{% block header %}{% include "partials/bar.html" %}{% endblock %}
+
+<main id="main">
+{% block main %}{% endblock %}
+</main>
+
+{% include "partials/footer.html" %}
+{% include "partials/settings.html" %}
+<p class="toast" role="status" aria-live="polite" data-toast></p>
+
+<script src="{{ asset('js/site.js') }}" defer></script>
+{% block scripts %}{% endblock %}
+{% if cfg.goatcounter %}
+<script data-goatcounter="https://{{ cfg.goatcounter }}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+{% endif %}
+</body>
+</html>

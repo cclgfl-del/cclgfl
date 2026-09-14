@@ -1,0 +1,47 @@
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="site-foot__grid">
+      <div class="site-foot__brand">
+        <a href="{{ url('/') }}" class="site-foot__mark" aria-label="{{ cfg.blog_name }} home">
+          <img src="{{ asset('img/seal.png') }}" alt="" width="56" height="56">
+          <span class="wordmark wordmark--md"><span class="wm-a">{{ cfg.centre_short }}</span><span class="wm-b">Blog</span></span>
+        </a>
+        <address>
+          {{ cfg.centre }}<br>
+          {{ cfg.university }}<br>
+          {{ cfg.address }}
+        </address>
+      </div>
+      <nav aria-label="Reading">
+        <p class="label">Read</p>
+        <ul>
+          <li><a href="{{ url('/') }}">Latest</a></li>
+          <li><a href="{{ url('/posts/') }}">All posts</a></li>
+          <li><a href="{{ url('/search/') }}">Search</a></li>
+          <li><a href="{{ url('/feed.xml') }}">RSS feed</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Subjects">
+        <p class="label">Subjects</p>
+        <ul>
+          {% for c in categories %}
+          <li><a href="{{ url('/category/' ~ c.slug ~ '/') }}">{{ c.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+      <nav aria-label="The Centre">
+        <p class="label">The Centre</p>
+        <ul>
+          <li><a href="{{ url('/about/') }}">About</a></li>
+          <li><a href="{{ url('/submit/') }}">Write for the blog</a></li>
+          <li><a href="{{ cfg.journal.url }}">{{ cfg.journal.name }}</a></li>
+          <li><a href="mailto:{{ cfg.email }}">{{ cfg.email }}</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="site-foot__base">
+      <p>&copy; {{ now.year }} {{ cfg.centre }}, {{ cfg.university }}</p>
+      <p><a href="#main">Back to top ↑</a></p>
+    </div>
+  </div>
+</footer>

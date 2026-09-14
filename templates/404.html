@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+
+{% block title %}Page not found · {{ cfg.blog_name }}{% endblock %}
+{% block meta %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block main %}
+<section class="lost wrap">
+  {{ m.plate(categories[2].slug, "medallion", "lost__plate") }}
+  <div class="lost__text">
+    <p class="kicker">Error 404</p>
+    <h1>This page isn't here</h1>
+    <p>The address may be mistyped, or the post may have moved. Everything the blog has published is listed in the index.</p>
+    <p class="lead__actions">
+      <a class="btn btn--solid" href="{{ url('/posts/') }}">All posts <span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn" href="{{ url('/search/') }}">Search</a>
+    </p>
+  </div>
+</section>
+{% if latest %}
+<section class="ledger wrap" aria-labelledby="latest-h">
+  <header class="rubric"><h2 id="latest-h">Latest</h2></header>
+  <ol class="rows">{% for p in latest %}{{ m.row(p, show_year=true) }}{% endfor %}</ol>
+</section>
+{% endif %}
+{% endblock %}

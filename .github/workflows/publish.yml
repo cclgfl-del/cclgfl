@@ -1,0 +1,132 @@
+# Publish the CCLGFL Blog.
+#
+# Every 30 minutes, and whenever someone presses "Run workflow":
+#   1. check the pipeline (offline self-test)
+#   2. screen new submissions in Notion
+#   3. sync Published rows into content/posts, and build previews of Accepted rows
+#   4. commit published posts (the repository is the archive of record)
+#   5. build the site and deploy it to GitHub Pages
+#
+# Previews of accepted posts are built inside this run and deployed to their
+# unlisted URLs, but never committed: the repository is public, and an
+# unpublished post must not be readable in it.
+#
+# A scheduled run with nothing new stops after step 4.
+# Before Notion is connected, steps 2–3 skip themselves and the site still
+# builds from whatever is in content/.
+#
+# Settings (Settings → Secrets and variables → Actions):
+#   secrets.NOTION_TOKEN        Notion integration token
+#   secrets.NOTION_DATABASE_ID  the editorial database
+#   secrets.PREVIEW_SECRET      any long random string; makes preview links unguessable
+#   vars.SITE_URL               e.g. https://cclgfl.nludelhi.ac.in  (defaults to the github.io address)
+#   vars.CUSTOM_DOMAIN          e.g. cclgfl.nludelhi.ac.in          (leave unset until DNS is ready)
+
+name: Publish
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore: ["README.md", "EDITORS.md"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+env:
+  SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
+  CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    outputs:
+      deploy: ${{ steps.decide.outputs.deploy }}
+    env:
+      NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+      NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+      PREVIEW_SECRET: ${{ secrets.PREVIEW_SECRET }}
+      BUILD_ALL: ${{ github.event_name != 'schedule' && '1' || '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: build/requirements.txt
+
+      - run: pip install -r build/requirements.txt
+
+      - name: Check the pipeline
+        run: python build/selftest.py
+
+      - name: Screen new submissions
+        if: env.NOTION_TOKEN != ''
+        run: python build/screen.py
+
+      - name: Sync from Notion
+        id: sync
+        run: python build/notion_sync.py
+
+      - name: Commit published posts
+        run: |
+          git config user.name  "CCLGFL publisher"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A content      # .gitignore keeps content/previews out
+          if ! git diff --cached --quiet; then
+            git commit -m "Sync posts from Notion"
+            git push
+          fi
+
+      # GitHub switches off scheduled workflows on repositories with no commits
+      # for 60 days — easy to hit over a vacation. A small commit every 45 quiet
+      # days keeps publishing running.
+      - name: Keep the schedule alive
+        if: github.event_name == 'schedule'
+        run: |
+          last=$(git log -1 --format=%ct)
+          if [ $(( ( $(date +%s) - last ) / 86400 )) -ge 45 ]; then
+            date -u +%Y-%m-%dT%H:%M:%SZ > content/.heartbeat
+            git add content/.heartbeat
+            git commit -m "Keep scheduled publishing active"
+            git push
+          fi
+
+      - name: Decide whether to deploy
+        id: decide
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ] || [ "${{ steps.sync.outputs.changed }}" = "true" ]; then
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+            echo "Nothing new in Notion; skipping build."
+          fi
+
+      - name: Build
+        if: steps.decide.outputs.deploy == 'true'
+        run: python build/build.py
+
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.decide.outputs.deploy == 'true'
+        with:
+          path: _site
+
+  deploy:
+    needs: publish
+    if: needs.publish.outputs.deploy == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ env.SITE_URL }}
+    steps:
+      - uses: actions/deploy-pages@v4

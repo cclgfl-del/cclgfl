@@ -1,0 +1,35 @@
+{# Engraved plate. kind: "band" (full-width header) or "medallion" (square). #}
+{% macro plate(slug, kind="band", extra="", href="") -%}
+{% set ribbons = pattern(slug, 'ribbons') %}
+{% set medal = pattern(slug, 'medal' if kind == 'band' else 'rosette') %}
+<{{ 'a' if href else 'div' }} class="plate plate--{{ kind }} {{ extra }}" aria-hidden="true"
+  {%- if href %} href="{{ href }}" tabindex="-1"{% endif %}>
+  <span class="plate__ribbons" style="-webkit-mask-image:url('{{ ribbons }}');mask-image:url('{{ ribbons }}')"></span>
+  <span class="plate__medal" style="-webkit-mask-image:url('{{ medal }}');mask-image:url('{{ medal }}')"></span>
+</{{ 'a' if href else 'div' }}>
+{%- endmacro %}
+
+{% macro mark(slug, size="") -%}
+<span class="mark {{ size }}" aria-hidden="true" style="-webkit-mask-image:url('{{ pattern(slug, 'mark') }}');mask-image:url('{{ pattern(slug, 'mark') }}')"></span>
+{%- endmacro %}
+
+{% macro meta_line(post) -%}
+<span>{{ post.minutes }} min read</span>
+{%- if post.notes %}<span>{{ post.notes }} {{ 'note' if post.notes == 1 else 'notes' }}</span>{% endif %}
+{%- endmacro %}
+
+{# One row of the ledger — used on the home page, subject pages, the index and
+   under "Read next". The whole row is clickable through the title's ::after. #}
+{% macro row(post, show_year=false, show_cat=true) -%}
+<li class="row">
+  <time class="row__date" datetime="{{ post.date | iso }}">{{ post.date | shortdate if show_year else post.date | daymonth }}</time>
+  {% if show_cat %}
+  <span class="row__cat">{{ mark(post.category.slug) }}{{ post.category.name }}</span>
+  {% endif %}
+  <div class="row__main">
+    <a class="row__title" href="{{ url('/post/' ~ post.slug ~ '/') }}">{{ post.title }}</a>
+    {% if post.byline %}<span class="row__who">{{ post.byline }}</span>{% endif %}
+  </div>
+  <span class="row__meta">{{ post.minutes }} min</span>
+</li>
+{%- endmacro %}

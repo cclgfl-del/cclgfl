@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+
+{% block title %}{{ post.title }} · {{ cfg.blog_name }}{% endblock %}
+{% block description %}{{ post.standfirst }}{% endblock %}
+
+{% block meta %}
+{% if preview %}
+<meta name="robots" content="noindex, nofollow, noarchive">
+{% else %}
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="{{ cfg.blog_name }}">
+<meta property="og:title" content="{{ post.title }}">
+<meta property="og:description" content="{{ post.standfirst }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="{{ card }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="article:published_time" content="{{ post.date | iso }}">
+<meta property="article:section" content="{{ post.category.name }}">
+<meta name="twitter:card" content="summary_large_image">
+{# Highwire tags: read by Google Scholar and by Zotero's page importer. #}
+<meta name="citation_title" content="{{ post.title }}">
+{% for a in post.authors %}<meta name="citation_author" content="{{ a }}">
+{% endfor %}
+<meta name="citation_publication_date" content="{{ post.date.strftime('%Y/%m/%d') }}">
+<meta name="citation_publisher" content="{{ cfg.centre }}, {{ cfg.university }}">
+<meta name="citation_abstract" content="{{ post.standfirst }}">
+<meta name="DC.type" content="Text.Blog">
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org", "@type": "BlogPosting",
+  "headline": post.title, "description": post.standfirst,
+  "datePublished": post.date | iso, "url": canonical, "image": card,
+  "articleSection": post.category.name, "wordCount": post.words,
+  "author": post.authors | map("string") | list,
+  "publisher": {"@type": "Organization", "name": cfg.centre + ", " + cfg.university},
+  "isPartOf": {"@type": "Blog", "name": cfg.blog_name, "url": abs_url("/")}
+} | tojson }}</script>
+{% endif %}
+{% endblock %}
+
+{% block main %}
+<article class="article" {% if not preview %}data-pagefind-body{% endif %}>
+  {% if preview %}
+  <p class="preview-flag"><strong>Preview</strong> — not published. This page is unlisted and hidden from search engines.</p>
+  {% endif %}
+
+  {{ m.plate(post.category.slug, "band", "plate--post") }}
+
+  <div class="reader">
+    <header class="article__head">
+      {# data-pagefind-ignore keeps the label out of search excerpts while still
+         recording it as metadata and as a filter. #}
+      <p class="kicker" data-pagefind-ignore>
+        <a href="{{ url('/category/' ~ post.category.slug ~ '/') }}" data-pagefind-meta="category" data-pagefind-filter="category">{{ post.category.name }}</a>
+      </p>
+      <h1 class="article__title" data-pagefind-meta="title">{{ post.title }}</h1>
+      <p class="article__stand">{{ post.standfirst }}</p>
+      <div class="dateline" data-pagefind-ignore>
+        <p class="dateline__who">{{ post.byline }}</p>
+        <p class="dateline__meta">
+          <time datetime="{{ post.date | iso }}" data-pagefind-meta="date">{{ post.date | longdate }}</time>
+          {{ m.meta_line(post) }}
+        </p>
+      </div>
+    </header>
+
+    <div class="prose" data-prose>
+      {{ post.html | safe }}
+    </div>
+
+    <footer class="article__foot" data-pagefind-ignore>
+      {% if post.bios %}
+      <section class="bios" aria-label="About the authors">
+        {% for b in post.bios %}<p>{{ b }}</p>{% endfor %}
+      </section>
+      {% endif %}
+
+      {% if not preview %}
+      <section class="cite" aria-labelledby="cite-h">
+        <h2 class="label" id="cite-h">Cite this post</h2>
+        <p class="cite__text">{{ cite_html | safe }}</p>
+        <div class="chips">
+          <button type="button" class="chip" data-copy="{{ cite_text }}" data-copied="Citation copied">Copy citation</button>
+          <a class="chip" href="cite.ris" download="{{ post.slug }}.ris">RIS</a>
+          <a class="chip" href="cite.bib" download="{{ post.slug }}.bib">BibTeX</a>
+        </div>
+      </section>
+
+      <section class="share" aria-labelledby="share-h">
+        <h2 class="label" id="share-h">Share</h2>
+        <div class="chips">
+          <button type="button" class="chip" data-copy="{{ canonical }}" data-copied="Link copied">Copy link</button>
+          <a class="chip" href="https://wa.me/?text={{ (post.title ~ ' — ' ~ canonical) | urlencode }}" rel="noopener">WhatsApp</a>
+          <a class="chip" href="https://www.linkedin.com/sharing/share-offsite/?url={{ canonical | urlencode }}" rel="noopener">LinkedIn</a>
+          <a class="chip" href="mailto:?subject={{ post.title | urlencode }}&amp;body={{ (post.standfirst ~ '\n\n' ~ canonical) | urlencode }}">Email</a>
+        </div>
+      </section>
+
+      {% if read_next %}
+      <section class="next" aria-labelledby="next-h">
+        <header class="rubric"><h2 id="next-h">Read next</h2></header>
+        <ol class="rows rows--compact">
+          {% for p in read_next %}{{ m.row(p, show_year=true) }}{% endfor %}
+        </ol>
+      </section>
+      {% endif %}
+      {% endif %}
+    </footer>
+  </div>
+</article>
+{% endblock %}

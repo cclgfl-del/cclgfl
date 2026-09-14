@@ -1,0 +1,12 @@
+<header class="bar" data-bar>
+  <div class="bar__progress" data-progress aria-hidden="true"></div>
+  <div class="wrap bar__in">
+    <a class="bar__brand" href="{{ url('/') }}" aria-label="{{ cfg.blog_name }} home">
+      <img src="{{ asset('img/seal.png') }}" alt="" width="32" height="32">
+      <span class="wordmark wordmark--sm"><span class="wm-a">{{ cfg.centre_short }}</span><span class="wm-b">Blog</span></span>
+    </a>
+    <span class="bar__section" data-section aria-hidden="true"></span>
+    {% include "partials/nav.html" %}
+    {% include "partials/tools.html" %}
+  </div>
+</header>

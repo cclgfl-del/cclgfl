@@ -1,0 +1,119 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  CCLGFL Blog — site configuration
+#  Everything an editor might reasonably change lives here. The build reads
+#  nothing else for names, links or rules.
+# ─────────────────────────────────────────────────────────────────────────────
+
+blog_name: CCLGFL Blog
+centre: Centre for Corporate Law, Governance and Financial Laws
+centre_short: CCLGFL
+university: National Law University Delhi
+address: Sector 14, Dwarka, New Delhi 110078
+email: nlud.bflr@nludelhi.ac.in
+
+# The public address. Overridden in CI by the SITE_URL repository variable, so
+# switching to the custom domain is a settings change, not a code change.
+url: https://cclgfl.nludelhi.ac.in
+
+journal:
+  name: Journal of Corporate and Financial Laws
+  url: https://cclgfl-nlud.github.io/jcfl/
+  volume: Volume I
+  blurb: >-
+    Volume I (2026) carries four articles, on extortionate credit transactions
+    in insolvency, insolvency clauses in investment treaties, India's green
+    finance framework, and stamp duty on intra-group mergers.
+
+# Paste the Notion form's public link here once the form exists. Until then the
+# Submit page explains that the form is being set up and points to the email.
+submission_form_url: ""
+
+# GoatCounter site code (e.g. "cclgfl" for cclgfl.goatcounter.com). Empty = no
+# analytics script at all.
+goatcounter: ""
+
+description: >-
+  Commentary and analysis on corporate law, corporate governance and financial
+  regulation from the Centre for Corporate Law, Governance and Financial Laws
+  at National Law University Delhi.
+
+about:
+  - >-
+    The Centre for Corporate Law, Governance and Financial Laws (CCLGFL) at
+    National Law University Delhi was reconstituted in 2025 as the successor to
+    the Centre for Business and Financial Laws and the Centre for Corporate
+    Governance. Building on the work of these two centres, CCLGFL's mandate has
+    been expanded to encompass developments in corporate law, corporate
+    governance and financial laws. It promotes rigorous research, scholarship,
+    and informed dialogue on legal, regulatory, and policy issues affecting
+    businesses, financial markets, and corporate institutions. It seeks to
+    deepen understanding of the legal and institutional frameworks governing
+    modern businesses and financial systems. It also aims to serve as a think
+    tank to strengthen the robustness and soundness of the corporate sector.
+  - >-
+    The Centre undertakes a range of academic and policy-oriented initiatives,
+    including round-table conferences and discussions with policymakers,
+    regulators, practitioners and other stakeholders. This facilitates
+    meaningful exchange between academia and practice and contributes to
+    contemporary legal and regulatory discourse.
+
+people:
+  - name: Dr. Aparajita Bhatt
+    role: Centre Director
+    photo: aparajita-bhatt.jpg
+  - name: Dr. Abha Yadav
+    role: Co-Director
+    photo: abha-yadav.jpg
+
+# Categories. `slug` becomes the URL; changing it breaks existing links.
+# Each category's guilloché engraving is generated from its slug, so a new
+# category gets its own pattern automatically.
+categories:
+  - slug: corporate-law
+    name: Corporate Law
+    short: Corporate Law
+    blurb: Company law, directors' duties, shareholder rights and corporate structures.
+  - slug: corporate-governance
+    name: Corporate Governance
+    short: Governance
+    blurb: Boards, disclosure, stewardship and the accountability of corporate power.
+  - slug: securities-capital-markets
+    name: Securities & Capital Markets
+    short: Securities
+    blurb: SEBI regulation, listing, market conduct and investor protection.
+  - slug: banking-finance
+    name: Banking & Finance
+    short: Banking
+    blurb: Banking regulation, lending, payments and financial institutions.
+  - slug: insolvency-restructuring
+    name: Insolvency & Restructuring
+    short: Insolvency
+    blurb: The Insolvency and Bankruptcy Code, resolution processes and creditor rights.
+  - slug: mergers-acquisitions
+    name: Mergers & Acquisitions
+    short: M&A
+    blurb: Takeovers, schemes of arrangement, deal structuring and control transactions.
+  - slug: competition-law
+    name: Competition Law
+    short: Competition
+    blurb: Antitrust enforcement, merger control and the regulation of digital markets.
+  - slug: taxation
+    name: Taxation
+    short: Taxation
+    blurb: Corporate and transactional tax, and its interaction with commercial law.
+  - slug: dispute-resolution
+    name: Dispute Resolution
+    short: Disputes
+    blurb: Commercial arbitration, litigation and the resolution of business disputes.
+
+# Blog submission rules. The Submit page is written from these, and the
+# automatic screening checks every manuscript against them.
+guidelines:
+  words_min: 1000
+  words_max: 1500
+  abstract_max_words: 50
+  title_max_words: 10
+  max_authors: 2
+  decision_days: 20
+  footnotes_allowed: false      # hyperlinks preferred; endnotes if unavoidable
+  filename_pattern: "Title_CCLGFL Blog"

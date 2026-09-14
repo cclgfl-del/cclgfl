@@ -1,0 +1,16 @@
+<nav class="nav" id="site-nav" aria-label="Primary" data-nav>
+  <details class="subjects-menu">
+    <summary>Subjects</summary>
+    <ul class="subjects-menu__list">
+      {% for c in categories %}
+      <li><a href="{{ url('/category/' ~ c.slug ~ '/') }}"
+             {% if page == 'category' and category.slug == c.slug %}aria-current="page"{% endif %}>
+        <span class="mark" style="-webkit-mask-image:url('{{ pattern(c.slug, 'mark') }}');mask-image:url('{{ pattern(c.slug, 'mark') }}')"></span>{{ c.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </details>
+  <a href="{{ url('/posts/') }}" {% if page == 'posts' %}aria-current="page"{% endif %}>All posts</a>
+  <a href="{{ url('/about/') }}" {% if page == 'about' %}aria-current="page"{% endif %}>About</a>
+  <a href="{{ url('/submit/') }}" {% if page == 'submit' %}aria-current="page"{% endif %}>Submit</a>
+  <a href="{{ cfg.journal.url }}" class="ext">Journal<span aria-hidden="true"> ↗</span></a>
+</nav>
