@@ -42,7 +42,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
+  SITE_URL: ${{ vars.SITE_URL }}
   CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
   PYTHONUNBUFFERED: "1"
 
@@ -58,6 +58,15 @@ jobs:
       BUILD_ALL: ${{ github.event_name != 'schedule' && '1' || '' }}
     steps:
       - uses: actions/checkout@v4
+
+      # Without a SITE_URL variable, default to this repository's github.io
+      # address. Computed in the shell, because scheduled runs don't carry the
+      # repository name in their event payload.
+      - name: Work out the site address
+        run: |
+          if [ -z "$SITE_URL" ]; then
+            echo "SITE_URL=https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}" >> "$GITHUB_ENV"
+          fi
 
       - uses: actions/setup-python@v5
         with:
@@ -127,6 +136,5 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ env.SITE_URL }}
     steps:
       - uses: actions/deploy-pages@v4

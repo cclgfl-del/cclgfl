@@ -4,6 +4,11 @@
 #  nothing else for names, links or rules.
 # ─────────────────────────────────────────────────────────────────────────────
 
+# Review mode: publishes the specimen posts under a "Review build" banner and
+# tells search engines to index nothing, so the design can be shown before any
+# real post exists. Set to false for launch.
+review: true
+
 blog_name: CCLGFL Blog
 centre: Centre for Corporate Law, Governance and Financial Laws
 centre_short: CCLGFL

@@ -256,8 +256,11 @@ def build_sitemap(cfg, posts):
                 for p in posts]
     write(OUT / "sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n'
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</urlset>\n' % "".join(entries))
-    write(OUT / "robots.txt", "User-agent: *\nDisallow: %s/preview/\nSitemap: %s/sitemap.xml\n"
-          % (cfg["base"], cfg["site_url"]))
+    if cfg.get("review"):
+        write(OUT / "robots.txt", "User-agent: *\nDisallow: /\n")
+    else:
+        write(OUT / "robots.txt", "User-agent: *\nDisallow: %s/preview/\nSitemap: %s/sitemap.xml\n"
+              % (cfg["base"], cfg["site_url"]))
 
 
 def build_patterns(cfg):
@@ -311,7 +314,8 @@ def main():
     args = ap.parse_args()
 
     cfg = load_config()
-    print("Building %s → %s" % (cfg["blog_name"], cfg["site_url"]))
+    args.specimens = args.specimens or bool(cfg.get("review"))
+    print("Building %s → %s%s" % (cfg["blog_name"], cfg["site_url"], "  [review mode]" if cfg.get("review") else ""))
     try:
         posts, previews = load_all(cfg, args.specimens)
     except ContentError as e:
