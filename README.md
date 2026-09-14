@@ -64,7 +64,8 @@ build/selftest.py         offline checks of the whole pipeline
 
 ### 1. The repository
 
-Create `cclgfl-nlud/cclgfl` (public) and push this folder.
+Create `cclgfl` (public) on the Centre's GitHub account, `cclgfl-del`, and push this folder.
+The Journal lives separately, at `cclgfl-nlud/jcfl`.
 
 In **Settings → Pages**, set **Source** to **GitHub Actions**. (Not "Deploy
 from a branch" — this site is built by the workflow.)
@@ -97,13 +98,15 @@ student's, for the same reason the GitHub account does.
 | `NOTION_TOKEN` | secret | the integration token |
 | `NOTION_DATABASE_ID` | secret | from step 2 |
 | `PREVIEW_SECRET` | secret | any long random string — makes preview links unguessable |
-| `SITE_URL` | variable | `https://cclgfl-nlud.github.io/cclgfl` for now |
+| `SITE_URL` | variable | optional — leave unset to use `https://cclgfl-del.github.io/cclgfl` |
 
 Then **Actions → Publish → Run workflow**.
 
 ### 4. The domain, when IT has made the CNAME
 
-1. IT creates `cclgfl` as a **CNAME** to `cclgfl-nlud.github.io`, **DNS only**.
+1. IT creates `cclgfl` as a **CNAME** to `cclgfl-del.github.io`, **DNS only**.
+   (Not `cclgfl-nlud.github.io` — that account holds the Journal, and a CNAME
+   must point at the account that owns this repository.)
 2. Set variables `SITE_URL` = `https://cclgfl.nludelhi.ac.in` and `CUSTOM_DOMAIN` = `cclgfl.nludelhi.ac.in`.
 3. Run the workflow, then tick **Enforce HTTPS** in Settings → Pages once the certificate is issued.
 
