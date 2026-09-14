@@ -542,7 +542,9 @@ a.plate:hover .plate__medal { opacity: 1; }
 .prose figcaption { font-family: var(--sans); font-size: .8rem; line-height: 1.45; color: var(--ink-3); margin-top: .65rem; }
 
 .table-wrap { overflow-x: auto; margin: 2em 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); }
-.prose table { width: 100%; border-collapse: collapse; font-size: .86em; line-height: 1.45; font-variant-numeric: lining-nums tabular-nums; }
+/* A minimum width, so on a phone a table scrolls inside its frame rather than
+   crushing each column to a word or two per line. */
+.prose table { width: 100%; min-width: 30rem; border-collapse: collapse; font-size: .86em; line-height: 1.45; font-variant-numeric: lining-nums tabular-nums; }
 .prose th { text-align: left; font-family: var(--sans); font-size: .72rem; font-weight: 600; letter-spacing: .09em;
   text-transform: uppercase; color: var(--ink-3); padding: .75rem 1rem .6rem 0; border-bottom: 1px solid var(--rule); }
 .prose td { padding: .7rem 1rem .7rem 0; border-bottom: 1px solid var(--hair); vertical-align: top; }
@@ -667,11 +669,15 @@ a.plate:hover .plate__medal { opacity: 1; }
 .checks li:last-child { border-bottom: 0; }
 
 .steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
-.steps li { counter-increment: step; display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: .5rem;
-  padding: .9rem 0; border-bottom: 1px solid var(--hair); }
-.steps li::before { content: counter(step, upper-roman); font-family: var(--sans); font-size: .75rem; font-weight: 600;
-  letter-spacing: .08em; color: var(--gold-ink); padding-top: .38rem; }
+/* The numeral is positioned, not a grid column: a list item mixes a <strong>
+   label with plain text, and as grid children those become separate cells —
+   the sentence then falls into the narrow numeral column one word per line. */
+.steps li { counter-increment: step; position: relative; padding: .9rem 0 .9rem 2.5rem; border-bottom: 1px solid var(--hair); }
+.steps li::before { content: counter(step, upper-roman); position: absolute; left: 0; top: 1.28rem;
+  font-family: var(--sans); font-size: .75rem; font-weight: 600; line-height: 1;
+  letter-spacing: .08em; color: var(--gold-ink); }
 .steps li:first-child { padding-top: .1rem; }
+.steps li:first-child::before { top: .48rem; }
 .steps li:last-child { border-bottom: 0; }
 
 .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--rule);
