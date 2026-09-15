@@ -129,7 +129,6 @@ def anonymise(src, dest):
 def screen(info, page, filename, g):
     ok, flag = [], []
     title = N.text(page, "title")
-    abstract = N.text(page, "abstract")
     authors = N.text(page, "authors")
 
     n = words(info["body"])
@@ -139,19 +138,14 @@ def screen(info, page, filename, g):
     tw = words(title)
     (ok if tw <= g["title_max_words"] else flag).append("Title %d words (max %d)" % (tw, g["title_max_words"]))
 
-    if abstract:
-        aw = words(abstract)
-        (ok if aw <= g["abstract_max_words"] else flag).append("Abstract %d words (max %d)" % (aw, g["abstract_max_words"]))
-    else:
-        flag.append("No abstract supplied")
-
     count = len(names_from(authors)) or (1 if authors else 0)
     (ok if 0 < count <= g["max_authors"] else flag).append("%d author(s) (max %d)" % (count, g["max_authors"]))
 
-    if info["footnotes"] and not g.get("footnotes_allowed", False):
-        flag.append("%d footnote(s) — footnotes are not accepted; hyperlinks or endnotes only" % info["footnotes"])
-    if info["endnotes"]:
-        ok.append("%d endnote(s)" % info["endnotes"])
+    notes = info["footnotes"] + info["endnotes"]
+    if notes and g.get("hyperlinks_only", True):
+        flag.append("%d footnote(s) or endnote(s) — references must be hyperlinks in the text" % notes)
+    elif not notes:
+        ok.append("No footnotes or endnotes")
 
     if not re.search(r"_CCLGFL Blog\.docx$", filename, re.I):
         flag.append("File name should follow “%s”" % g["filename_pattern"])

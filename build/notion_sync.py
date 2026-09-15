@@ -62,14 +62,6 @@ def site_config():
     return cfg
 
 
-def resolve_category(name, cfg):
-    wanted = (name or "").strip().casefold()
-    for c in cfg["categories"]:
-        if wanted in (c["slug"].casefold(), c["name"].casefold(), str(c.get("short", "")).casefold()):
-            return c["slug"]
-    return None
-
-
 def preview_token(page_id):
     secret = (os.environ.get("PREVIEW_SECRET") or os.environ.get("NOTION_TOKEN") or "").encode()
     return hmac.new(secret, page_id.replace("-", "").encode(), hashlib.sha256).hexdigest()[:20]
@@ -99,9 +91,6 @@ def build_post(client, page, cfg, dest):
     title = N.text(page, "title")
     if not title:
         raise ValueError("no title")
-    cat = resolve_category(N.text(page, "category"), cfg)
-    if not cat:
-        raise ValueError("category %r is not in site.yml" % N.text(page, "category"))
 
     manuscripts = [f for f in N.files(page, "manuscript") if f[0].lower().endswith(".docx")]
     if manuscripts:
@@ -131,7 +120,6 @@ def build_post(client, page, cfg, dest):
         "slug": slugify(N.text(page, "slug") or title),
         "authors": N.text(page, "authors"),
         "bios": [b.strip() for b in N.text(page, "bio").split("\n") if b.strip()],
-        "category": cat,
         "standfirst": N.text(page, "abstract"),
         "date": N.date(page, "date") or dt.date.today().isoformat(),
         "featured": N.checkbox(page, "featured"),

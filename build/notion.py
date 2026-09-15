@@ -18,7 +18,6 @@ VERSION = "2022-06-28"
 FIELDS = {
     "title": "Title",
     "status": "Status",
-    "category": "Category",
     "authors": "Authors",
     "author_email": "Author email",
     "bio": "Author bio",

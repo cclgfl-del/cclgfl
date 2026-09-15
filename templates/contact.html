@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us · {{ cfg.blog_name }}{% endblock %}
+
+{% block main %}
+<header class="page-head wrap">
+  <div>
+    <p class="kicker">{{ cfg.centre }}</p>
+    <h1>Contact Us</h1>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="dept" aria-labelledby="c-email">
+    <h2 class="dept__label" id="c-email">Email</h2>
+    <div class="dept__body">
+      <p class="contact__email"><a href="mailto:{{ cfg.email }}">{{ cfg.email }}</a></p>
+      <p class="muted">For questions about the Blog. Submissions sent by email are not considered; see <a href="{{ url('/submissions/') }}">Submissions</a>.</p>
+    </div>
+  </section>
+
+  <section class="dept" aria-labelledby="c-post">
+    <h2 class="dept__label" id="c-post">Address</h2>
+    <div class="dept__body">
+      <address class="contact__address">{{ cfg.centre }}<br>{{ cfg.university }}<br>{{ cfg.address }}</address>
+    </div>
+  </section>
+</div>
+{% endblock %}

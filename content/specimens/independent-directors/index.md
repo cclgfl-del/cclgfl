@@ -3,7 +3,6 @@ title: The independent director and the question nobody asks at appointment
 authors: Specimen Author
 bios:
   - Specimen text for reviewing the layout. Not a published post.
-category: corporate-governance
 date: 2026-07-30
 specimen: true
 standfirst: The statutory tests for independence look backward, at relationships. The harder question is forward-looking, and the law leaves it to the board.

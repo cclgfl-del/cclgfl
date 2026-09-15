@@ -1,7 +1,7 @@
 {# Engraved plate. kind: "band" (full-width header) or "medallion" (square). #}
-{% macro plate(slug, kind="band", extra="", href="") -%}
-{% set ribbons = pattern(slug, 'ribbons') %}
-{% set medal = pattern(slug, 'medal' if kind == 'band' else 'rosette') %}
+{% macro plate(key, kind="band", extra="", href="") -%}
+{% set ribbons = pattern(key, 'ribbons') %}
+{% set medal = pattern(key, 'medal' if kind == 'band' else 'rosette') %}
 <{{ 'a' if href else 'div' }} class="plate plate--{{ kind }} {{ extra }}" aria-hidden="true"
   {%- if href %} href="{{ href }}" tabindex="-1"{% endif %}>
   <span class="plate__ribbons" style="-webkit-mask-image:url('{{ ribbons }}');mask-image:url('{{ ribbons }}')"></span>
@@ -9,27 +9,56 @@
 </{{ 'a' if href else 'div' }}>
 {%- endmacro %}
 
-{% macro mark(slug, size="") -%}
-<span class="mark {{ size }}" aria-hidden="true" style="-webkit-mask-image:url('{{ pattern(slug, 'mark') }}');mask-image:url('{{ pattern(slug, 'mark') }}')"></span>
-{%- endmacro %}
-
 {% macro meta_line(post) -%}
 <span>{{ post.minutes }} min read</span>
 {%- if post.notes %}<span>{{ post.notes }} {{ 'note' if post.notes == 1 else 'notes' }}</span>{% endif %}
 {%- endmacro %}
 
-{# One row of the ledger — used on the home page, subject pages, the index and
-   under "Read next". The whole row is clickable through the title's ::after. #}
-{% macro row(post, show_year=false, show_cat=true) -%}
+{# One row of the ledger — used on the home page, the Blogs timeline and under
+   "Read next". The whole row is clickable through the title's ::after. #}
+{% macro row(post, show_year=false) -%}
 <li class="row">
   <time class="row__date" datetime="{{ post.date | iso }}">{{ post.date | shortdate if show_year else post.date | daymonth }}</time>
-  {% if show_cat %}
-  <span class="row__cat">{{ mark(post.category.slug) }}{{ post.category.name }}</span>
-  {% endif %}
   <div class="row__main">
     <a class="row__title" href="{{ url('/post/' ~ post.slug ~ '/') }}">{{ post.title }}</a>
     {% if post.byline %}<span class="row__who">{{ post.byline }}</span>{% endif %}
   </div>
   <span class="row__meta">{{ post.minutes }} min</span>
 </li>
+{%- endmacro %}
+
+{# The call for blogs, on the home page. #}
+{% macro call() -%}
+{% set g = cfg.guidelines %}
+<section class="call" aria-labelledby="call-h">
+  {# Ribbons across the band, the rosette anchored at the right edge, clear of the text. #}
+  <div class="plate call__plate" aria-hidden="true">
+    <span class="plate__ribbons" style="-webkit-mask-image:url('{{ pattern(house, 'ribbons') }}');mask-image:url('{{ pattern(house, 'ribbons') }}')"></span>
+    <span class="plate__medal" style="-webkit-mask-image:url('{{ pattern(house, 'rosette') }}');mask-image:url('{{ pattern(house, 'rosette') }}')"></span>
+  </div>
+  <div class="wrap call__in">
+    <div class="call__text">
+      <p class="kicker kicker--band">Call for Blogs</p>
+      <h2 id="call-h">Submissions are open</h2>
+      <p class="call__lede">The {{ cfg.blog_name }} invites analytical and critical writing on contemporary developments in corporate law, corporate governance, financial laws and allied areas. Submissions are accepted on a rolling basis.</p>
+      <dl class="call__facts">
+        <div><dt>Length</dt><dd>{{ "{:,}".format(g.words_min) }}–{{ "{:,}".format(g.words_max) }} words</dd></div>
+        <div><dt>Authors</dt><dd>Up to {{ g.max_authors }}</dd></div>
+        <div><dt>Decision</dt><dd>Within {{ g.decision_days }} days</dd></div>
+      </dl>
+      <p class="call__actions">
+        {% if cfg.submission_form_url %}
+        <a class="btn btn--gold" href="{{ cfg.submission_form_url }}" rel="noopener">Submit a blog <span class="arr" aria-hidden="true">→</span></a>
+        {% endif %}
+        <a class="btn btn--band" href="{{ url('/submissions/') }}">Submission guidelines <span class="arr" aria-hidden="true">→</span></a>
+      </p>
+    </div>
+    <div class="call__areas">
+      <p class="label label--band">Areas of law</p>
+      <ol class="areas areas--band">
+        {% for a in cfg.areas %}<li>{{ a }}</li>{% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
 {%- endmacro %}

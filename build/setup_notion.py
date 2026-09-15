@@ -52,7 +52,6 @@ def main():
     properties = {
         F["title"]: {"title": {}},
         F["status"]: {"select": {"options": [{"name": s, "color": STATUS_COLOURS[s]} for s in N.STATUSES]}},
-        F["category"]: {"select": {"options": [{"name": c["name"], "color": "default"} for c in cfg["categories"]]}},
         F["authors"]: {"rich_text": {}},
         F["author_email"]: {"email": {}},
         F["bio"]: {"rich_text": {}},

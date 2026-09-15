@@ -28,6 +28,9 @@ GOLD_INK = (135, 90, 31)
 FONTS = Path(__file__).parent / "fonts"
 
 
+MONTHS = ["January", "February", "March", "April", "May", "June", "July",
+          "August", "September", "October", "November", "December"]
+
 def _font(name, size):
     return ImageFont.truetype(str(FONTS / name), size)
 
@@ -63,8 +66,7 @@ def draw_card(post, cfg, seal_path):
     img = Image.new("RGBA", (W * SS, H * SS), PAPER + (255,))
 
     # Engraving: medallion bleeding off the right edge, ribbon along the foot.
-    slug = post.category["slug"]
-    _engrave(img, guilloche.medallion(slug, 280, 330, 620), MAROON, 92, 1.0, dx=760, dy=-10)
+    _engrave(img, guilloche.medallion(post.engraving, 280, 330, 620), MAROON, 92, 1.0, dx=760, dy=-10)
     ribbon = [guilloche.woven_ribbon(H - 34, 9, W / 30, 7, W, 18)]
     _engrave(img, ribbon, GOLD, 120, 0.9)
 
@@ -79,8 +81,9 @@ def draw_card(post, cfg, seal_path):
     small = _font("HankenGrotesk-Medium.ttf", 15 * SS)
     d.text(((x + 84) * SS, 98 * SS), cfg["university"], font=small, fill=INK_2)
 
-    cat_font = _font("HankenGrotesk-SemiBold.ttf", 17 * SS)
-    d.text((x * SS, 186 * SS), post.category["name"].upper(), font=cat_font, fill=GOLD_INK)
+    date_font = _font("HankenGrotesk-SemiBold.ttf", 17 * SS)
+    when = "%d %s %d" % (post.date.day, MONTHS[post.date.month - 1], post.date.year)
+    d.text((x * SS, 186 * SS), when.upper(), font=date_font, fill=GOLD_INK)
 
     font, lines, size = _fit_title(d, post.title, "CormorantGaramond-SemiBold.ttf", 690, 4, [66, 58, 50, 44])
     y = 222
@@ -98,7 +101,7 @@ def draw_card(post, cfg, seal_path):
 
 def build_card(post, cfg, seal_path, out_path, cache_dir):
     key = hashlib.sha256(json.dumps([
-        post.title, post.byline, post.category["slug"], cfg["blog_name"], cfg["university"], 3,
+        post.title, post.byline, post.engraving, post.date.isoformat(), cfg["blog_name"], cfg["university"], 4,
     ]).encode("utf-8")).hexdigest()[:20]
     cache_dir.mkdir(parents=True, exist_ok=True)
     cached = cache_dir / ("%s.png" % key)

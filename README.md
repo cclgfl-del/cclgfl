@@ -39,7 +39,8 @@ Two decisions shape the rest:
 ## Layout
 
 ```
-site.yml                  names, links, categories, submission rules — edit this, not code
+site.yml                  names, links, areas of law, submission figures — edit this, not code
+content/pages/            the About the Blog and Submissions text, in Markdown
 content/posts/            published posts (written by the sync, committed)
 content/previews/         previews of accepted posts — built during each run, never committed
 content/.previews-state   a fingerprint of the previews, so idle runs can skip the build
@@ -127,14 +128,10 @@ workflow runs it before every build.
 
 ## Things that need confirming
 
-- **Blog guidelines.** `site.yml → guidelines` and the Submit page are taken
-  from the predecessor CBFL blog's published guidelines, with the name changed:
-  1,000–1,500 words, 50-word abstract, 10-word title, two authors, hyperlinks
-  with endnotes only where needed, no footnotes, decision in 20 days, literary
-  rights vesting in the Centre. Confirm these still stand.
-- **Categories.** Nine subjects in `site.yml`, drawn from CCLGFL's mandate and
-  CBFL's old categories. The slug becomes the URL, so settle them before the
-  first post.
+- **The submission form.** The guidelines (`content/pages/submissions.md`) say
+  submissions come through a Google Form; the pipeline above reads a Notion
+  form. Either change the wording, or connect the Google Form to the Notion
+  database.
 - **Contact email.** Currently `nlud.bflr@nludelhi.ac.in`.
 - **Submission form link.** Empty until the Notion form exists; the Submit page
   says the form is being set up.

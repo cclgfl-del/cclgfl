@@ -24,9 +24,9 @@ into the **Screening** field. Lines marked ⚠ need attention; lines marked ✓ 
 fine. It checks:
 
 - length (1,000–1,500 words, not counting notes)
-- title (10 words at most) and abstract (50 words at most)
+- title (10 words at most)
 - number of authors (two at most)
-- footnotes, which the guidelines do not accept
+- footnotes and endnotes — the guidelines require references as hyperlinks
 - the file name
 - the author's name appearing in the text, headers or footers
 
@@ -46,8 +46,7 @@ Fill in, on the Notion page:
 - **Title** — as it should appear on the site
 - **Authors** — separated by commas or "and"
 - **Author bio** — one line per author, e.g. *Jane Doe is a fourth-year student at National Law University Delhi.*
-- **Abstract** — shown under the title, and when the post is shared
-- **Category** — one of the blog's subjects
+- **Abstract** — a one- or two-sentence summary, shown under the title and when the post is shared. Optional: left empty, the opening words of the post are used.
 - **Manuscript** — the **final, edited** Word file. If there are several files, the last one is used.
 - **Publish date** — optional; defaults to the day it is published
 
@@ -78,12 +77,10 @@ publish*, the reason is written there.
 
 ## Notes and citations
 
-The blog cites by **hyperlink**. Endnotes are only for sources that can't be
-linked. On the site, endnotes appear in the margin beside the paragraph they
-belong to.
-
-Word endnotes (and footnotes, if one slips through) come across automatically.
-Nothing to do.
+The guidelines require every reference to be a **hyperlink** in the text, and
+screening flags any footnotes or endnotes. If the Editorial Board relaxes that
+for a post, Word notes still come across automatically and appear in the margin
+beside the paragraph they belong to.
 
 ### Writing a post directly in Notion instead of Word
 
@@ -97,7 +94,7 @@ the Notion page and leave **Manuscript** empty.
 ## Setting up the form (once)
 
 1. In the database, add a **Form** view.
-2. Add these questions, each linked to the property of the same name: **Title**, **Authors**, **Author email**, **Author bio**, **Abstract**, **Category**, **Manuscript**. Leave Status out — a response with no Status is treated as a new submission.
+2. Add these questions, each linked to the property of the same name: **Title**, **Authors**, **Author email**, **Author bio**, **Manuscript**. Leave Status out — a response with no Status is treated as a new submission.
 3. Allow anyone with the link to respond.
 4. Copy the form's link and give it to whoever maintains the site, so it can go in `site.yml` as `submission_form_url`. The *Write for the blog* page then links to it.
 

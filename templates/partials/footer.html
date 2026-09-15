@@ -12,29 +12,20 @@
           {{ cfg.address }}
         </address>
       </div>
-      <nav aria-label="Reading">
-        <p class="label">Read</p>
+      <nav aria-label="The Blog">
+        <p class="label">The Blog</p>
         <ul>
-          <li><a href="{{ url('/') }}">Latest</a></li>
-          <li><a href="{{ url('/posts/') }}">All posts</a></li>
-          <li><a href="{{ url('/search/') }}">Search</a></li>
+          <li><a href="{{ url('/') }}">Home</a></li>
+          <li><a href="{{ url('/blogs/') }}">Blogs</a></li>
+          <li><a href="{{ url('/submissions/') }}">Submissions</a></li>
           <li><a href="{{ url('/feed.xml') }}">RSS feed</a></li>
-        </ul>
-      </nav>
-      <nav aria-label="Subjects">
-        <p class="label">Subjects</p>
-        <ul>
-          {% for c in categories %}
-          <li><a href="{{ url('/category/' ~ c.slug ~ '/') }}">{{ c.name }}</a></li>
-          {% endfor %}
         </ul>
       </nav>
       <nav aria-label="The Centre">
         <p class="label">The Centre</p>
         <ul>
-          <li><a href="{{ url('/about/') }}">About</a></li>
-          <li><a href="{{ url('/submit/') }}">Write for the blog</a></li>
-          <li><a href="{{ cfg.journal.url }}">{{ cfg.journal.name }}</a></li>
+          <li><a href="{{ url('/about/') }}">About Us</a></li>
+          <li><a href="{{ url('/contact/') }}">Contact Us</a></li>
           <li><a href="mailto:{{ cfg.email }}">{{ cfg.email }}</a></li>
         </ul>
       </nav>

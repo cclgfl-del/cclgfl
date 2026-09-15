@@ -93,8 +93,8 @@ def main():
     check("hidden author property found", info["hidden"]["author"] == "Priya Sharma")
     page = fake_page(title="Why the threshold matters", abstract="Short abstract.", authors="Priya Sharma")
     report, flags = screen.screen(info, page, docx_path.name, {
-        "words_min": 1000, "words_max": 1500, "title_max_words": 10, "abstract_max_words": 50,
-        "max_authors": 2, "footnotes_allowed": False, "filename_pattern": "Title_CCLGFL Blog"})
+        "words_min": 1000, "words_max": 1500, "title_max_words": 10,
+        "max_authors": 2, "hyperlinks_only": True, "filename_pattern": "Title_CCLGFL Blog"})
     check("short manuscript flagged", any("words" in f for f in flags), report)
     check("footnotes flagged", any("footnote" in f for f in flags), report)
     check("author name in text flagged", any("Author name in the text" in f for f in flags), report)
@@ -167,12 +167,11 @@ class FakeNotion:
         return Path(dest)
 
 
-def notion_page(pid, title, status, category="Insolvency & Restructuring", edited="2026-09-01T10:00:00.000Z", slug=""):
+def notion_page(pid, title, status, edited="2026-09-01T10:00:00.000Z", slug=""):
     rt = lambda s: {"type": "rich_text", "rich_text": [{"plain_text": s}] if s else []}  # noqa: E731
     return {"id": pid, "last_edited_time": edited, "properties": {
         "Title": {"type": "title", "title": [{"plain_text": title}]},
         "Status": {"type": "select", "select": {"name": status}},
-        "Category": {"type": "select", "select": {"name": category}},
         "Authors": rt("A. Author"), "Author bio": rt(""), "Abstract": rt("An abstract."),
         "Slug": rt(slug), "Manuscript": {"type": "files", "files": []}, "Header image": {"type": "files", "files": []},
         "Publish date": {"type": "date", "date": {"start": "2026-09-01"}},
@@ -216,7 +215,7 @@ def sync_checks(tmp):
     check("sync: edited slug moves the post", changed and (S.POSTS / "renamed-post").exists()
           and not (S.POSTS / "a-published-post").exists())
 
-    bad = notion_page("p-bad", "Wrong subject", "Published", category="Astrology")
+    bad = notion_page("p-bad", "", "Published")
     api.pages.append(bad)
     api.blocks["p-bad"] = body
     changed, errors = S.sync(api, "db", cfg)

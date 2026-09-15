@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+
+{% block title %}Blogs · {{ cfg.blog_name }}{% endblock %}
+
+{% block main %}
+<header class="page-head wrap">
+  <div>
+    <p class="kicker">The {{ cfg.blog_name }}</p>
+    <h1>Blogs</h1>
+  </div>
+  <p class="page-head__aside">{{ total }} {{ 'blog' if total == 1 else 'blogs' }}, newest first</p>
+</header>
+
+{% if years %}
+<div class="wrap">
+  <form class="find" role="search" onsubmit="return false" data-find hidden>
+    <label for="q" class="visually-hidden">Search the blogs</label>
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+    <input id="q" name="q" type="search" placeholder="Search by title, author, case or statute" autocomplete="off" spellcheck="false">
+  </form>
+  <p class="find__meta" data-search-meta aria-live="polite"></p>
+  <ol class="rows rows--results" data-results hidden></ol>
+</div>
+
+<div data-timeline>
+{% for year, months in years.items() %}
+<section class="year wrap" aria-labelledby="y{{ year }}">
+  <h2 class="year__n" id="y{{ year }}">{{ year }}</h2>
+  <div class="year__months">
+    {% for month, ps in months.items() %}
+    <section class="month" aria-label="{{ month }} {{ year }}">
+      <h3 class="month__name">{{ month }}</h3>
+      <ol class="rows">
+        {% for p in ps %}{{ m.row(p) }}{% endfor %}
+      </ol>
+    </section>
+    {% endfor %}
+  </div>
+</section>
+{% endfor %}
+</div>
+{% else %}
+<div class="wrap">
+  <div class="empty">
+    <p class="empty__lead">No blogs have been published yet.</p>
+    <p>The first blogs are in preparation. Submissions are open.</p>
+    <a class="btn" href="{{ url('/submissions/') }}">Submission guidelines <span class="arr" aria-hidden="true">→</span></a>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{% if years %}<script src="{{ asset('js/search.js') }}" defer></script>{% endif %}
+{% endblock %}

@@ -6,14 +6,14 @@
 
 {% block main %}
 <section class="lost wrap">
-  {{ m.plate(categories[2].slug, "medallion", "lost__plate") }}
+  {{ m.plate(house, "medallion", "lost__plate") }}
   <div class="lost__text">
     <p class="kicker">Error 404</p>
     <h1>This page isn't here</h1>
-    <p>The address may be mistyped, or the post may have moved. Everything the blog has published is listed in the index.</p>
+    <p>The address may be mistyped, or the blog may have moved. Everything the Blog has published is listed under Blogs.</p>
     <p class="lead__actions">
-      <a class="btn btn--solid" href="{{ url('/posts/') }}">All posts <span class="arr" aria-hidden="true">→</span></a>
-      <a class="btn" href="{{ url('/search/') }}">Search</a>
+      <a class="btn btn--solid" href="{{ url('/blogs/') }}">Blogs <span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn" href="{{ url('/') }}">Home</a>
     </p>
   </div>
 </section>

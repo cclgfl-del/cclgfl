@@ -20,17 +20,8 @@ email: nlud.bflr@nludelhi.ac.in
 # switching to the custom domain is a settings change, not a code change.
 url: https://cclgfl.nludelhi.ac.in
 
-journal:
-  name: Journal of Corporate and Financial Laws
-  url: https://jcfl.nludelhi.ac.in/
-  volume: Volume I
-  blurb: >-
-    Volume I (2026) carries four articles, on extortionate credit transactions
-    in insolvency, insolvency clauses in investment treaties, India's green
-    finance framework, and stamp duty on intra-group mergers.
-
-# Paste the Notion form's public link here once the form exists. Until then the
-# Submit page explains that the form is being set up and points to the email.
+# The submission form's public link. Until it is set, the Submissions page says
+# the form will be published there.
 submission_form_url: ""
 
 # GoatCounter site code (e.g. "cclgfl" for cclgfl.goatcounter.com). Empty = no
@@ -38,16 +29,16 @@ submission_form_url: ""
 goatcounter: ""
 
 description: >-
-  Commentary and analysis on corporate law, corporate governance and financial
-  regulation from the Centre for Corporate Law, Governance and Financial Laws
-  at National Law University Delhi.
+  Critical engagement with contemporary developments in corporate law,
+  corporate governance, financial laws and allied areas, from the Centre for
+  Corporate Law, Governance and Financial Laws at National Law University Delhi.
 
 about:
   - >-
     The Centre for Corporate Law, Governance and Financial Laws (CCLGFL) at
     National Law University Delhi was reconstituted in 2025 as the successor to
     the Centre for Business and Financial Laws and the Centre for Corporate
-    Governance. Building on the work of these two centres, CCLGFL's mandate has
+    Governance. Building on the work of these two centres, CCLGFL’s mandate has
     been expanded to encompass developments in corporate law, corporate
     governance and financial laws. It promotes rigorous research, scholarship,
     and informed dialogue on legal, regulatory, and policy issues affecting
@@ -70,55 +61,23 @@ people:
     role: Co-Director
     photo: abha-yadav.jpg
 
-# Categories. `slug` becomes the URL; changing it breaks existing links.
-# Each category's guilloché engraving is generated from its slug, so a new
-# category gets its own pattern automatically.
-categories:
-  - slug: corporate-law
-    name: Corporate Law
-    short: Corporate Law
-    blurb: Company law, directors' duties, shareholder rights and corporate structures.
-  - slug: corporate-governance
-    name: Corporate Governance
-    short: Governance
-    blurb: Boards, disclosure, stewardship and the accountability of corporate power.
-  - slug: securities-capital-markets
-    name: Securities & Capital Markets
-    short: Securities
-    blurb: SEBI regulation, listing, market conduct and investor protection.
-  - slug: banking-finance
-    name: Banking & Finance
-    short: Banking
-    blurb: Banking regulation, lending, payments and financial institutions.
-  - slug: insolvency-restructuring
-    name: Insolvency & Restructuring
-    short: Insolvency
-    blurb: The Insolvency and Bankruptcy Code, resolution processes and creditor rights.
-  - slug: mergers-acquisitions
-    name: Mergers & Acquisitions
-    short: M&A
-    blurb: Takeovers, schemes of arrangement, deal structuring and control transactions.
-  - slug: competition-law
-    name: Competition Law
-    short: Competition
-    blurb: Antitrust enforcement, merger control and the regulation of digital markets.
-  - slug: taxation
-    name: Taxation
-    short: Taxation
-    blurb: Corporate and transactional tax, and its interaction with commercial law.
-  - slug: dispute-resolution
-    name: Dispute Resolution
-    short: Disputes
-    blurb: Commercial arbitration, litigation and the resolution of business disputes.
+# The areas the Blog primarily covers — listed on the home and About Us pages.
+# The Blog is organised by date, not by area, so these are not tags on posts.
+areas:
+  - Corporate Law
+  - Corporate Governance
+  - Securities Laws
+  - Banking and Finance Law
+  - Insolvency Laws
 
-# Blog submission rules. The Submit page is written from these, and the
-# automatic screening checks every manuscript against them.
+# Blog submission rules. The figures on the Submissions page and the automatic
+# screening both read these. The wording of the guidelines themselves is in
+# content/pages/submissions.md.
 guidelines:
   words_min: 1000
   words_max: 1500
-  abstract_max_words: 50
   title_max_words: 10
   max_authors: 2
-  decision_days: 20
-  footnotes_allowed: false      # hyperlinks preferred; endnotes if unavoidable
+  decision_days: 30
+  hyperlinks_only: true         # references as hyperlinks; no footnotes or endnotes
   filename_pattern: "Title_CCLGFL Blog"

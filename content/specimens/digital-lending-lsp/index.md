@@ -3,7 +3,6 @@ title: Who answers for the lending app?
 authors: Specimen Author
 bios:
   - Specimen text for reviewing the layout. Not a published post.
-category: banking-finance
 date: 2026-07-16
 specimen: true
 standfirst: The RBI's digital lending framework makes the regulated lender responsible for the service providers it works through. The borrower rarely knows who that lender is.

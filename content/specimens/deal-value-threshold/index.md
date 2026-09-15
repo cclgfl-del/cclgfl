@@ -3,7 +3,6 @@ title: Deal value thresholds and the acquisitions merger control could not see
 authors: [Specimen Author, Second Author]
 bios:
   - Specimen text for reviewing the layout. Not a published post.
-category: competition-law
 date: 2026-08-14
 specimen: true
 standfirst: Asset and turnover tests miss acquisitions of young firms whose value lies in users and data. The deal value threshold was written to close that gap; how far it closes it depends on one undefined phrase.
@@ -13,7 +12,7 @@ Merger control in India, as in most jurisdictions, has historically asked whethe
 
 ## I. The threshold
 
-The [Competition (Amendment) Act, 2023](https://www.cci.gov.in/) introduced a threshold based on the value of the transaction. A combination with a value above ₹2,000 crore now requires notification where the target has substantial business operations in India, whether or not the asset and turnover thresholds are met.[^1]
+The [Competition (Amendment) Act, 2023](https://www.cci.gov.in/) introduced a threshold based on the value of the transaction. A combination with a value above ₹2,000 crore now requires notification where the target has substantial business operations in India, whether or not the asset and turnover thresholds are met.
 
 ## II. Substantial business operations
 
@@ -24,5 +23,3 @@ Everything turns on what counts as substantial business operations in India. The
 - The threshold's success will depend on how the Commission treats transactions near the line.
 
 The provision is a sensible response to a genuine gap. Whether it reaches the acquisitions it was designed for is a question the first contested notifications will answer.
-
-[^1]: Section 5 of the Competition Act, 2002, as amended by the Competition (Amendment) Act, 2023.

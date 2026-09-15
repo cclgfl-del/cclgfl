@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% set g = cfg.guidelines %}
+
+{% block title %}Submissions · {{ cfg.blog_name }}{% endblock %}
+{% block description %}Submission guidelines for the {{ cfg.blog_name }}: scope, procedure, length, formatting, references and anonymity.{% endblock %}
+
+{% block main %}
+<header class="page-head wrap">
+  <div>
+    <p class="kicker">Call for Blogs</p>
+    <h1>Submissions</h1>
+  </div>
+  <p class="page-head__aside">Accepted on a rolling basis</p>
+</header>
+
+<div class="wrap">
+  <dl class="facts" aria-label="At a glance">
+    <div class="fact"><dt class="label">Length</dt><dd>{{ "{:,}".format(g.words_min) }}–{{ "{:,}".format(g.words_max) }}</dd><dd class="fact__note">words</dd></div>
+    <div class="fact"><dt class="label">Authors</dt><dd>{{ g.max_authors }}</dd><dd class="fact__note">at most</dd></div>
+    <div class="fact"><dt class="label">Decision</dt><dd>{{ g.decision_days }}</dd><dd class="fact__note">days from receipt</dd></div>
+    <div class="fact"><dt class="label">Title</dt><dd>{{ g.title_max_words }}</dd><dd class="fact__note">words at most</dd></div>
+    <div class="fact"><dt class="label">References</dt><dd>Hyperlinks</dd><dd class="fact__note">within the body of the text</dd></div>
+    <div class="fact"><dt class="label">File</dt><dd>.doc / .docx</dd><dd class="fact__note">named “{{ g.filename_pattern }}”</dd></div>
+  </dl>
+
+  <div class="submit-cta">
+    {% if cfg.submission_form_url %}
+    <p>All submissions must be made through the submission form.</p>
+    <a class="btn btn--solid" href="{{ cfg.submission_form_url }}" rel="noopener">Open the submission form <span class="arr" aria-hidden="true">→</span></a>
+    {% else %}
+    <p>The link to the submission form will be published here.</p>
+    {% endif %}
+  </div>
+
+  {% for s in sections %}
+  <section class="dept" aria-labelledby="s-{{ loop.index }}">
+    <h2 class="dept__label" id="s-{{ loop.index }}">{{ s.heading }}</h2>
+    <div class="dept__body dept__body--text">{{ s.html | safe }}</div>
+  </section>
+  {% endfor %}
+</div>
+{% endblock %}

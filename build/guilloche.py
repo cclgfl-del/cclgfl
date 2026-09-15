@@ -14,8 +14,8 @@ That also keeps the files small. Each motif is written once into <defs> and
 repeated with <use transform="…">, so a medallion of several hundred strokes
 is a few kilobytes.
 
-Every pattern is generated deterministically from a category's slug. The same
-category always gets the same engraving; a new category gets a new one. The
+Every pattern is generated deterministically from a key (a post's hash). The same
+key always gets the same engraving; a new key gets a new one. The
 SVGs are single-colour line art used as CSS masks, so the theme picks the ink.
 """
 
@@ -78,7 +78,7 @@ def woven_ribbon(y, amp, wavelength, strands, width, pts_per_wave=20):
 
 def medallion(slug, cx, cy, size, fine=True):
     """The anatomy of a banknote medallion: an open lace border, a scalloped
-    band that overlaps it, and a petalled rosette at the centre. Each category
+    band that overlaps it, and a petalled rosette at the centre. Each key
     draws its own proportions, lobe counts and centre form, so no two match."""
     rng = _rng(slug, "medallion")
     s = size / 2
@@ -100,7 +100,7 @@ def medallion(slug, cx, cy, size, fine=True):
                              harmonic=rng.uniform(0.18, 0.42), pts_per_lobe=16))
 
     # Centre: either a petalled rosette whose petals reach almost to the middle,
-    # or a star of long narrow lobes. The choice is what separates categories
+    # or a star of long narrow lobes. The choice is what separates engravings
     # most at a glance.
     inner_r = mid_r - mid_amp * 0.9
     if rng.random() < 0.55:
@@ -119,7 +119,7 @@ def medallion(slug, cx, cy, size, fine=True):
 
 def plate(slug, width=1600, height=440):
     """Post header: a woven ribbon across the full width, finer ribbons along
-    both edges, double frame rules, and a medallion placed per category."""
+    both edges, double frame rules, and a medallion placed per key."""
     rng = _rng(slug, "plate")
     ribbons, medal = [], []
 
@@ -202,7 +202,7 @@ def rule_svg(width=720, height=30):
     return svg(width, height, [woven_ribbon(height / 2, height * 0.3, width / 12, 7, width, 24)], 0.9)
 
 
-def write_category_patterns(slug, out_dir):
+def write_patterns(slug, out_dir):
     import os
     os.makedirs(out_dir, exist_ok=True)
     ribbons, medal = plate(slug)

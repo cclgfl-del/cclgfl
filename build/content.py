@@ -18,6 +18,7 @@ Rendering does four things a plain Markdown converter does not:
 """
 
 import datetime as dt
+import hashlib
 import html
 import re
 import unicodedata
@@ -252,7 +253,6 @@ class Post:
     title: str
     authors: list
     date: dt.date
-    category: dict
     standfirst: str
     bios: list
     html: str
@@ -268,6 +268,13 @@ class Post:
     extra: dict = field(default_factory=dict)
 
     @property
+    def engraving(self):
+        """The key each post's engraving is generated from. A hash of the slug,
+        so the pattern files of a preview don't spell out an unpublished title,
+        and the preview and the published post share one engraving."""
+        return hashlib.sha256(self.slug.encode("utf-8")).hexdigest()[:12]
+
+    @property
     def minutes(self):
         return max(1, round(self.words / 230))
 
@@ -279,20 +286,13 @@ class Post:
         return a[0] if len(a) == 1 else "%s and %s" % (", ".join(a[:-1]), a[-1])
 
 
-def load_post(folder, categories, preview_token=""):
+def load_post(folder, preview_token=""):
     index = folder / "index.md"
     meta, body = split_front_matter(index.read_text(encoding="utf-8"), index)
 
-    missing = [k for k in ("title", "date", "category") if not meta.get(k)]
+    missing = [k for k in ("title", "date") if not meta.get(k)]
     if missing:
         raise ContentError("%s: missing %s" % (index, ", ".join(missing)))
-    cat = categories.get(str(meta["category"]).strip())
-    if not cat:
-        by_name = {c["name"].lower(): c for c in categories.values()}
-        cat = by_name.get(str(meta["category"]).strip().lower())
-    if not cat:
-        raise ContentError("%s: unknown category %r — add it to site.yml or fix the post"
-                           % (index, meta["category"]))
 
     date = meta["date"]
     if isinstance(date, str):
@@ -317,7 +317,6 @@ def load_post(folder, categories, preview_token=""):
         title=smarten(str(meta["title"]).strip()),
         authors=as_list(meta.get("authors")),
         date=date,
-        category=cat,
         standfirst=smarten(standfirst),
         bios=[smarten(b) for b in bios],
         html=r["html"],

@@ -2,15 +2,14 @@
 title: Section 29A and the price of keeping promoters out
 authors: [Specimen Author, Second Author]
 bios:
-  - Specimen text, written to review the layout of a long post with notes, headings and a table. Not a published post.
-category: insolvency-restructuring
+  - Specimen text, written to review the layout of a long post with headings and a table. Not a published post.
 date: 2026-09-10
 featured: true
 specimen: true
 standfirst: The Code's eligibility bar was built to stop defaulting promoters buying back their companies at a discount. Its breadth now shapes who can bid at all.
 ---
 
-When the [Insolvency and Bankruptcy Code, 2016](https://ibbi.gov.in/) was amended to insert section 29A, the concern was specific and widely shared: that promoters whose management had driven a company into default would return through the resolution process and acquire it again, free of much of its debt. The provision answers that concern by rendering a long list of persons ineligible to submit a resolution plan.[^1]
+When the [Insolvency and Bankruptcy Code, 2016](https://ibbi.gov.in/) was amended to insert section 29A, the concern was specific and widely shared: that promoters whose management had driven a company into default would return through the resolution process and acquire it again, free of much of its debt. The provision answers that concern by rendering a long list of persons ineligible to submit a resolution plan.
 
 The difficulty is that the list is not confined to the promoters the amendment had in mind. It reaches connected persons, related parties and entities under common control, and in doing so it turns an anti-abuse rule into one of the principal determinants of who may participate in an insolvency at all.
 
@@ -18,7 +17,7 @@ The difficulty is that the list is not confined to the promoters the amendment h
 
 Section 29A operates at the threshold. A person caught by any of its clauses cannot be a resolution applicant, and the committee of creditors cannot approve a plan submitted by one. The grounds include being an undischarged insolvent, being a wilful defaulter, and holding an account classified as a non-performing asset for a year or more without clearing the overdue amounts before submitting a plan.
 
-The Supreme Court upheld the provision against a challenge under Article 14, accepting that the legislature was entitled to exclude persons whose conduct had contributed to the failure of the corporate debtor.[^2] The bar also extends to those acting jointly or in concert with an ineligible person — which is where the practical difficulty begins.
+The Supreme Court upheld the provision against a challenge under Article 14, accepting that the legislature was entitled to exclude persons whose conduct had contributed to the failure of the corporate debtor. The bar also extends to those acting jointly or in concert with an ineligible person — which is where the practical difficulty begins.
 
 ### A. The reach of "connected person"
 
@@ -43,16 +42,10 @@ Two features of the table matter. The grounds directed at conduct are narrow and
 
 ## III. A narrower reading
 
-A reading that preserves the purpose of the provision while limiting its collateral effect would ask whether the connection between the applicant and the ineligible person is one through which the mischief could actually operate — that is, whether the ineligible person would gain control of, or benefit from, the resolved company.[^3]
+A reading that preserves the purpose of the provision while limiting its collateral effect would ask whether the connection between the applicant and the ineligible person is one through which the mischief could actually operate — that is, whether the ineligible person would gain control of, or benefit from, the resolved company.
 
 That approach is not a licence to evade the bar. It would still exclude the promoter who returns through a new vehicle, which is the case the amendment was drafted for. What it would not do is exclude an unconnected business line of a group merely because it shares a parent with an account in default.
 
 ---
 
 The broader lesson is familiar from other areas of commercial regulation: a rule drafted against a specific abuse, if its definitions are broad enough, becomes a general rule of market structure. Whether that is acceptable is a policy choice, and it is one worth making explicitly rather than by the accumulation of connected-person findings.
-
-[^1]: Section 29A was inserted with effect from 23 November 2017 by the Insolvency and Bankruptcy Code (Amendment) Ordinance, 2017, later replaced by the Insolvency and Bankruptcy Code (Amendment) Act, 2018.
-
-[^2]: *Swiss Ribbons Pvt. Ltd. v. Union of India*, (2019) 4 SCC 17.
-
-[^3]: The Supreme Court considered the object of section 29A and the relevance of connected persons in *ArcelorMittal India Pvt. Ltd. v. Satish Kumar Gupta*, (2019) 2 SCC 1.
