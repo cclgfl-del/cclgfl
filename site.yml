@@ -14,7 +14,7 @@ centre: Centre for Corporate Law, Governance and Financial Laws
 centre_short: CCLGFL
 university: National Law University Delhi
 address: Sector 14, Dwarka, New Delhi 110078
-email: nlud.bflr@nludelhi.ac.in
+email: blog.cclgfl@nludelhi.ac.in
 
 # The public address. Overridden in CI by the SITE_URL repository variable, so
 # switching to the custom domain is a settings change, not a code change.

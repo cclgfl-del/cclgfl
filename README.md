@@ -132,7 +132,7 @@ workflow runs it before every build.
   submissions come through a Google Form; the pipeline above reads a Notion
   form. Either change the wording, or connect the Google Form to the Notion
   database.
-- **Contact email.** Currently `nlud.bflr@nludelhi.ac.in`.
+- **Contact email.** Currently `blog.cclgfl@nludelhi.ac.in`.
 - **Submission form link.** Empty until the Notion form exists; the Submit page
   says the form is being set up.
 

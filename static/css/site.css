@@ -32,21 +32,25 @@
 /* ── tokens ────────────────────────────────────────────────────────────── */
 
 :root {
-  /* paper and ink — neutrals leaning warm, toward the gold */
-  --paper:      #FBF9F5;
-  --raise:      #F4EFE6;
-  --sunk:       #ECE5D9;
-  --ink:        #1D1917;
-  --ink-2:      #4B433E;
-  --ink-3:      #675E57;
-  --rule:       #DCD2C3;
-  --hair:       #EAE3D7;
+  /* Paper and ink, and the Centre's maroon and gold: the same values as the
+     journal's stylesheet, so the two sites read as one house. */
+  --paper:      #FCFBF9;
+  --raise:      #F4F0E8;
+  --sunk:       #ECE5D8;
+  --ink:        #201C1A;
+  --ink-2:      #554D49;
+  --ink-3:      #6A615C;
+  --rule:       #DDD4C4;
+  --hair:       #EBE4D7;
 
-  /* the Centre's colours */
   --accent:     #5F1D25;   /* maroon: links, brand */
-  --accent-2:   #7A2A33;
+  --accent-2:   #7D3039;
   --gold:       #9E6B22;   /* decorative gold: rules, marks */
-  --gold-ink:   #845920;   /* gold that carries text, AA on paper */
+  --gold-ink:   #8B5D20;   /* gold that carries text, AA on paper */
+  --gold-pale:  #E3CFA4;   /* link underlines */
+
+  /* Headings are maroon, not black, as they are on the journal. */
+  --display-ink: #3D1218;
 
   /* engraving inks */
   --engrave-1:  #5F1D25;
@@ -87,8 +91,8 @@
     --paper: #15110F; --raise: #1E1917; --sunk: #26201D;
     --ink: #EEE7DD; --ink-2: #C3B8AB; --ink-3: #A0958A;
     --rule: #3B322D; --hair: #2A2320;
-    --accent: #E6B781; --accent-2: #F1CEA3;
-    --gold: #C2914A; --gold-ink: #D8AA67;
+    --accent: #E6B781; --accent-2: #F1CEA3; --gold-pale: #6B5433;
+    --gold: #C2914A; --gold-ink: #D8AA67; --display-ink: #F6EFE6;
     --engrave-1: #C88A8F; --engrave-2: #C2914A; --engrave-1-o: .7; --engrave-2-o: .45;
     --band: #2B1216; --band-ink: #F4EADB; --band-ink-2: #D2BCA0; --band-gold: #C9A064;
     --sel: #4B3A26; --shadow: 0 18px 50px rgb(0 0 0 / .5);
@@ -98,8 +102,8 @@
   --paper: #15110F; --raise: #1E1917; --sunk: #26201D;
   --ink: #EEE7DD; --ink-2: #C3B8AB; --ink-3: #A0958A;
   --rule: #3B322D; --hair: #2A2320;
-  --accent: #E6B781; --accent-2: #F1CEA3;
-  --gold: #C2914A; --gold-ink: #D8AA67;
+  --accent: #E6B781; --accent-2: #F1CEA3; --gold-pale: #6B5433;
+  --gold: #C2914A; --gold-ink: #D8AA67; --display-ink: #F6EFE6;
   --engrave-1: #C88A8F; --engrave-2: #C2914A; --engrave-1-o: .7; --engrave-2-o: .45;
   --band: #2B1216; --band-ink: #F4EADB; --band-ink-2: #D2BCA0; --band-gold: #C9A064;
   --sel: #4B3A26; --shadow: 0 18px 50px rgb(0 0 0 / .5);
@@ -108,8 +112,8 @@
   --paper: #F3EADA; --raise: #EADFCB; --sunk: #E0D3BB;
   --ink: #2E251C; --ink-2: #57493A; --ink-3: #66574A;
   --rule: #D3C3A7; --hair: #E2D6C0;
-  --accent: #6B2A22; --accent-2: #86372D;
-  --gold: #946524; --gold-ink: #74501C;
+  --accent: #6B2A22; --accent-2: #86372D; --gold-pale: #D6BE93;
+  --gold: #946524; --gold-ink: #74501C; --display-ink: #43160F;
   --engrave-1: #6B2A22; --engrave-2: #946524;
   --sel: #E0CFA8;
 }
@@ -184,10 +188,10 @@ code { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-siz
 .kicker a:hover { text-decoration: underline; text-underline-offset: .3em; text-decoration-thickness: 1px; }
 .kicker time { color: var(--ink-3); font-weight: 500; letter-spacing: .1em; }
 
-.wordmark { font-family: var(--display); line-height: .86; color: var(--ink); white-space: nowrap; margin: 0; font-weight: 600; }
+.wordmark { font-family: var(--display); line-height: .86; color: var(--display-ink); white-space: nowrap; margin: 0; font-weight: 600; }
 .wm-a { font-weight: 600; letter-spacing: .03em; font-variant-numeric: lining-nums; }
-.wm-b { font-style: italic; font-weight: 400; color: var(--accent); margin-left: .16em; letter-spacing: 0; }
-.wordmark--lg { font-size: clamp(2.4rem, .6rem + 9vw, 7.25rem); }
+.wm-b { font-weight: 400; margin-left: .22em; letter-spacing: 0; }
+.wordmark--lg { font-size: clamp(2.4rem, .9rem + 7vw, 6rem); text-align: center; }
 .wordmark--md { font-size: 1.9rem; }
 .wordmark--sm { font-size: 1.5rem; }
 
@@ -238,6 +242,18 @@ code { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-siz
 .menu-btn { display: none; }
 
 
+/* Display headings take the maroon, as on the journal; the running text
+   stays ink. Anything set on the maroon band keeps its own colour. */
+.lead__title, .lead__title a, .second__title, .second__title a, .row__title,
+.page-head h1, .article__title, .empty__lead, .lost h1, .person__name,
+.contact__email, .contact__email a, .year__n, .prose h2, .prose h3, .prose h4,
+.fact dd:first-of-type, .areas li, .dept__body--text ul li {
+  color: var(--display-ink);
+}
+.row:hover .row__title, .lead__title a:hover, .second__title a:hover { color: var(--accent); }
+.areas--band li, .call h2 { color: var(--band-ink); }
+.prose a:not(.pn) { text-decoration-color: var(--gold-pale); }
+
 /* ── university strip ──────────────────────────────────────────────────── */
 
 .strip { background: var(--band); color: var(--band-ink); }
@@ -255,18 +271,19 @@ code { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-siz
 
 /* ── nameplate (home) ──────────────────────────────────────────────────── */
 
-.nameplate { padding-top: clamp(1.75rem, 3.5vw, 3rem); }
-.nameplate__row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end;
-  gap: 1.5rem 3rem; padding-bottom: clamp(1.25rem, 2.5vw, 1.9rem); }
-.nameplate__brand { display: flex; align-items: center; gap: clamp(.9rem, 2.2vw, 1.75rem);
+/* The masthead is centred, as the journal's is: seal, name, a gold rule. */
+.nameplate { padding-top: clamp(1.75rem, 3.5vw, 2.75rem); }
+.nameplate__in { display: grid; justify-items: center; gap: clamp(.9rem, 2vw, 1.4rem);
+  padding-bottom: clamp(1.1rem, 2.2vw, 1.6rem); }
+.nameplate__brand { display: grid; justify-items: center; gap: clamp(.55rem, 1.4vw, 1rem);
   text-decoration: none; min-width: 0; }
-.nameplate__seal { width: clamp(2.9rem, 1.1rem + 6vw, 6.5rem); flex: none; }
-.nameplate__aside { display: grid; justify-items: end; gap: 1.1rem; padding-bottom: .35rem; }
-.nameplate__tag { font-style: italic; font-size: 1.0625rem; line-height: 1.45; color: var(--ink-2);
-  text-align: right; max-width: 17rem; margin: 0; text-wrap: balance; }
+.nameplate__seal { width: clamp(2.6rem, 1rem + 5vw, 4.5rem); }
+.nameplate__rule { display: block; width: clamp(3rem, 8vw, 5.5rem); height: 1px; background: var(--gold); }
 
-.sections { border-top: 4px double var(--ink); border-bottom: 1px solid var(--rule); }
-.sections__in { display: flex; align-items: center; min-height: 3.1rem; }
+.sections { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.sections__in { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: 3.1rem; }
+.sections .nav { grid-column: 2; justify-content: center; }
+.sections .tools { grid-column: 3; justify-self: end; }
 .nav > a {
   font-family: var(--sans); font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
   color: var(--ink-2); text-decoration: none; white-space: nowrap; padding-block: .95rem;
@@ -771,12 +788,7 @@ a.plate:hover .plate__medal { opacity: 1; }
 
 @media (max-width: 760px) {
   .strip__centre { display: none; }
-  .nameplate__row { grid-template-columns: 1fr; }
-  .nameplate__aside { justify-items: start; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-    padding-bottom: 0; }
-  .nameplate__row { gap: 1.1rem; }
   .lead__plate, .lead--empty .lead__plate { max-width: 9.5rem; }
-  .nameplate__tag { text-align: left; font-size: .95rem; }
   .bar__section { display: none; }
   .second { grid-template-columns: 1fr; }
   .second__item, .second__item + .second__item { padding: 1.5rem 0 1.75rem; border-left: 0; }

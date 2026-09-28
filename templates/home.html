@@ -3,22 +3,18 @@
 
 {% block header %}
 <header class="nameplate">
-  <div class="wrap">
-    <div class="nameplate__row">
-      <a class="nameplate__brand" href="{{ url('/') }}">
-        <img class="nameplate__seal" src="{{ asset('img/seal.png') }}"
-             alt="Seal of the {{ cfg.centre }}" width="104" height="104">
-        <h1 class="wordmark wordmark--lg"><span class="wm-a">{{ cfg.centre_short }}</span><span class="wm-b">Blog</span></h1>
-      </a>
-      <div class="nameplate__aside">
-        <p class="nameplate__tag">Corporate law, corporate governance and financial laws</p>
-        {% include "partials/tools.html" %}
-      </div>
-    </div>
+  <div class="wrap nameplate__in">
+    <a class="nameplate__brand" href="{{ url('/') }}">
+      <img class="nameplate__seal" src="{{ asset('img/seal.png') }}"
+           alt="Seal of the {{ cfg.centre }}" width="104" height="104">
+      <h1 class="wordmark wordmark--lg"><span class="wm-a">{{ cfg.centre_short }}</span><span class="wm-b">Blog</span></h1>
+    </a>
+    <span class="nameplate__rule" aria-hidden="true"></span>
   </div>
   <div class="sections">
     <div class="wrap sections__in">
       {% include "partials/nav.html" %}
+      {% include "partials/tools.html" %}
     </div>
   </div>
 </header>
