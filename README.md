@@ -85,6 +85,12 @@ converter reads only that copy.
 - **Safe from the sync.** Archive posts have no `notion_id`, so the Notion sync never
   edits or removes them, and refuses to publish a Notion row over one.
 - Seven posts typed their own endnotes at the end of the text; they remain as written.
+- **Three more come from Word files, not Wix.** *ARCs: From thriving optimism to failing
+  in Vain*, *Re-evaluating Dual Class Regulation* and *Resolving the clash: The IBC and
+  Benami Act* were in the Centre's "CBFL Published Articles" folder but never on the
+  old site. They carry the date each file was last saved (28 Aug 2023, 19 Jan 2024 and
+  24 Apr 2023; no publication date is written in them), no author note, and no
+  "first published" line. Their front matter says where they came from.
 
 ## Setting it up (once)
 
