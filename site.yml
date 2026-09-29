@@ -20,9 +20,10 @@ email: blog.cclgfl@nludelhi.ac.in
 # switching to the custom domain is a settings change, not a code change.
 url: https://cclgfl.nludelhi.ac.in
 
-# The submission form's public link. Until it is set, the Submissions page says
-# the form will be published there.
-submission_form_url: ""
+# The Google Form authors submit through. This is the respondent link
+# (.../viewform), not the editor link (.../edit). Leave it empty and the
+# Submissions page says the link will be published there.
+submission_form_url: "https://docs.google.com/forms/d/1EhoZLGA0U2TUK4aUFuOr502HRT_YfsmDQLlpiWqlcqQ/viewform"
 
 # GoatCounter site code (e.g. "cclgfl" for cclgfl.goatcounter.com). Empty = no
 # analytics script at all.
@@ -66,9 +67,10 @@ people:
 areas:
   - Corporate Law
   - Corporate Governance
-  - Securities Laws
-  - Banking and Finance Law
+  - Securities and Capital Market Laws
+  - Banking and Finance Law and Fintech
   - Insolvency Laws
+  - Commercial Laws
 
 # Blog submission rules. The figures on the Submissions page and the automatic
 # screening both read these. The wording of the guidelines themselves is in

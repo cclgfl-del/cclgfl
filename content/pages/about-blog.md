@@ -4,8 +4,9 @@ The Blog primarily covers the following areas of law:
 
 - Corporate Law
 - Corporate Governance
-- Securities Laws
-- Banking and Finance Law
+- Securities and Capital Market Laws
+- Banking and Finance Law and Fintech
 - Insolvency Laws
+- Commercial Laws
 
 The above areas are indicative rather than exhaustive, and the Blog remains open to scholarship engaging with emerging or interdisciplinary issues that further the academic objectives and broader mandate of the Centre.

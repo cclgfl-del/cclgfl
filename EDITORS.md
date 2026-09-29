@@ -7,7 +7,7 @@ code, GitHub or the website directly.
 
 | Status | What it means | Who moves it |
 |---|---|---|
-| **Submitted** (or empty) | An author sent it through the form | The form |
+| **Submitted** (or empty) | An author sent it through the Google Form and it has been added to the database | Whoever handles the form |
 | **Screened** | Checked automatically against the guidelines; an anonymised copy is attached | The system, within half an hour |
 | **In review** | The Editorial Board is reading the anonymised copy | You |
 | **Accepted** | Approved and being edited. A **Preview link** appears on the page | You |
@@ -91,12 +91,21 @@ the Notion page and leave **Manuscript** empty.
 - Paste links as normal.
 - For a note, type `[^1]` where the marker goes. Then add a heading called **Notes** at the very end, followed by a numbered list: item 1 is note 1, item 2 is note 2.
 
-## Setting up the form (once)
+## The submission form
 
-1. In the database, add a **Form** view.
-2. Add these questions, each linked to the property of the same name: **Title**, **Authors**, **Author email**, **Author bio**, **Manuscript**. Leave Status out — a response with no Status is treated as a new submission.
-3. Allow anyone with the link to respond.
-4. Copy the form's link and give it to whoever maintains the site, so it can go in `site.yml` as `submission_form_url`. The *Write for the blog* page then links to it.
+Authors submit through the Centre's **Google Form**; its respondent link is
+`submission_form_url` in `site.yml`, and the Submissions page and the home
+page link to it.
+
+The screening and publishing steps above work from the Notion database, so
+each Google Form response has to become a row there: **Title**, **Authors**,
+**Author email**, **Author bio**, and the Word file under **Manuscript**. Leave
+Status empty — a row with no Status is treated as a new submission. Until the
+form is connected to Notion automatically, do this by hand.
+
+For the form to work for authors outside the University, it must be open to
+anyone with the link (not restricted to NLUD accounts). Google requires
+respondents to sign in to a Google account to upload a file.
 
 Notion's free plan limits uploads to 5 MB per file, which is well above a
 normal Word manuscript.

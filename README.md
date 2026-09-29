@@ -128,10 +128,11 @@ workflow runs it before every build.
 
 ## Things that need confirming
 
-- **The submission form.** The guidelines (`content/pages/submissions.md`) say
-  submissions come through a Google Form; the pipeline above reads a Notion
-  form. Either change the wording, or connect the Google Form to the Notion
-  database.
+- **The submission form.** Submissions come through the Centre's Google Form
+  (`submission_form_url` in `site.yml`), but the pipeline above reads a Notion
+  database. Until the form's responses are connected to Notion, an editor copies
+  each one across (see EDITORS.md). The form must also be open to anyone with
+  the link, or authors outside the University cannot use it.
 - **Contact email.** Currently `blog.cclgfl@nludelhi.ac.in`.
 - **Submission form link.** Empty until the Notion form exists; the Submit page
   says the form is being set up.
