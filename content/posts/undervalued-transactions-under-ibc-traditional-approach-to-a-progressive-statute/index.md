@@ -1,0 +1,48 @@
+---
+title: 'Undervalued Transactions Under IBC: Traditional Approach to a Progressive Statute'
+slug: undervalued-transactions-under-ibc-traditional-approach-to-a-progressive-statute
+authors:
+- Badal Singh
+- Aditi Kotecha
+date: '2024-05-16'
+bios:
+- The authors are Badal Singh and Aditi Kotecha, fourth-year students at Hidayatullah National Law University, Raipur.
+archive: CBFL Blog
+archive_url: https://www.cbflnludelhi.in/post/undervalued-transactions-under-ibc-traditional-approach-to-a-progressive-statute
+---
+
+## Background
+
+The creditors of a corporate debtor are held in the highest regard when it comes to the Insolvency Resolution Process as well as Liquidation under the Insolvency and Bankruptcy Code, 2016 (“**IBC**”). The objectives of the Code provide for the maximisation of the value of assets and balancing the interests of all the stakeholders, and thus the Code follows the scheme of “Creditor in Control” in order to achieve the aspirations of the objectives and to maximise the pool of wealth so that the interests of the creditors are satisfied to their fullest.
+
+IBC provides for the Corporate Insolvency Resolution Process (“**CIRP**”) to ensure the revival of business as a going concern through the adoption of a viable Resolution Plan. However, the adoption of a Resolution Plan is not a certainty, and the business may be compelled to go for liquidation. For liquidation, the Resolution Professional is required to form an estate of assets known as *liquidation assets*, so that the same can be sold to satisfy the claims of stakeholders as per the waterfall mechanism prescribed in [Section 53 of the IBC](https://www.mca.gov.in/Ministry/pdf/TheInsolvencyandBankruptcyofIndia.pdf). Section 36 of the IBC provides for the assets that shall form part of the liquidation estate and the same includes any assets or their value recovered through proceedings for avoidance of transaction. Avoidance transactions refer to such transactions entered into by the corporate debtor to defy or deny its assets from being part of the liquidation estate under the apprehension of a prospective CIRP and subsequent liquidation. Avoidance transactions are primarily categorised into four types, namely Preferential, Undervalued, Extortion in Credit, and Fraudulent Transactions. The provisions regarding all the Avoidance Transactions are apt and crystal clear, save for the Undervalued Transactions. The underlying interpretation of the law concerning undervalued transactions is dubious and inclined away from the objective of the code, which is the maximisation of the value of the assets.
+
+In this piece, the authors have tried to throw light on the undervalued transactions and the existing irregularity in the concerned provision by posing a fair criticism and taking help from the corresponding law in other jurisdictions.
+
+## Undervalued Transactions Under the IBC
+
+Transactions would be considered as undervalued if the corporate debtor makes a gift to any person, or when there is the transfer of one or more assets by the corporate debtor at a consideration significantly lower than what the corporate debtor paid for the asset, given that the transaction is not entered into in the ordinary course of business of the corporate debtor. Section 45 of the Code deals with undervalued transactions and provides that the liquidator or the resolution professional, on examination, shall make an application to the Adjudicating Authority (“**AA**”) to declare the transactions that were undervalued in the twilight period. The twilight period herein means the specified lookback period for which the impugned transactions are to be scrutinised. The twilight period, as provided under Section 46 is one year preceding the Insolvency Commencement Date (“**ICD**”), for the transactions made with any other person, and two years preceding the ICD for the transactions made with a related party.
+
+An undervalued transaction is entered into by the corporate debtor with the objective of reducing the value of the liquidation estate, thereby causing wrongful loss to the creditors by eluding the chunk of proceeds that could have formed part of their claim. Further, unlike other jurisdictions, the IBC [does not look into the intent](https://nclt.gov.in/gen_pdf.php?filepath=%2FEfile_Document%2Fncltdoc%2Fcasedoc%2F0404112031252022%2F04%2FOrder-Challenge%2F04_order-Challange_004_169466976433781032165029bc45fc30.pdf) of the corporate debtor while entering into such transactions, and thus, even a transaction entered into by a corporate debtor who was in requirement of a liquid asset for a specified period in good faith would be brought under the scrutiny of the AA if the consideration was less than what he had paid for and such transaction was entered into in the restricted timeline as provided under Section 46 of the code.
+
+This safeguard erodes the purpose for which the avoidance transaction was entered into. An illustration would be helpful to get a clearer picture of undervalued transactions and the existing lacuna:
+
+*‘A’, the corporate debtor bought 100 shares of a company at Rs. 1000 in 2015. A sold those shares at Rs. 500 in 2023 at a discounted price due to the dire requirement of liquidity. A goes into CIRP in 2024. The said transaction, even though it was done in good faith, would come under the purview of undervalued transactions.*
+
+## Lacuna in the Provision Governing Undervalued Transactions
+
+A plain reading of Sections 45 and 46 of the IBC gives an understanding that any transaction entered into by the corporate debtor involving the sale of its assets for consideration more than its actual purchase or acquiescence price would be outside the purview of undervalued transaction and ultimately be secured from any sort of scrutiny by the AA. But the provision merely takes into account the consideration paid by the Corporate Debtor and ignores factors that might have resulted in the gradual value addition of the asset with the passage of time. Such traditional and stringent valuation does not reflect the contemporary worth of the assets and thus does not take into consideration the actual loss of assets from the liquidation estate. It is not necessary for an asset’s value to depreciate over the course of time and factors like inflation, demand and supply, availability, value addition, etc. might contribute to the value of the assets being enhanced and ultimately a change in its fair-market value. In such a scenario, valuation with the consideration paid by the corporate debtor as a reference would certainly defeat the wealth maximisation and creditor protection objective of the code. Let us understand this through a second illustration:
+
+*‘A’, the corporate debtor bought 100 shares of a company at Rs. 1000 per share in 2015. A sold those shares at Rs. 1100 per share in 2023. A CIRP proceeding was initiated in 2024 against A. The current fair market value of those shares is Rs. 5000 per share. The said transaction, even though it cannot be classified as an undervalued transaction under Section 45 of the code, due to the archaic approach undertaken, would still defy the purpose of incorporating the provision in the code.*
+
+Such a transaction, by remaining outside the purview of Section 45 of the code, would still be detrimental to the fair value that ought to be attributed to the liquidation estate and subsequently to the funds that are to be utilised for satisfying the claims of the creditors and ancillary stakeholders.
+
+## Position in Other Jurisdictions
+
+The UK Insolvency Act, 1986 operates on a similar line when it comes to undervalued transactions, however, the scheme therein has evolved with time and is more pragmatic and in accordance with the need of the hour. The Courts have interpreted the provision to give a wider ambit to the term consideration in order to give regard to the change that is bound to happen in the value of assets. In the case of [Reid v. Ramlort](https://www.casemine.com/judgement/uk/5a8ff72760d03e7f57ea8b78), the court highlighted the requirement of a nuanced valuation technique in cases where the surrender value differed from the actual value for a comprehensive and equitable valuation of all the transactions that ought to fall under scrutiny. A distinction between the two jurisdictions appears in the manner of interpretation, as the UK also takes into consideration the good faith of the parties related without stringently relying on the statutory provision. On the contrary, the position in India is traditional and the legislative intent has failed to cater to the current need to make a liberal interpretation of the statute on grounds of equity and justice.
+
+In Germany, the insolvency law provides for a look-back period of ten years, and more than that, the provision specifies looking into the intent of the transaction before bringing it under scrutiny.
+
+## Conclusion
+
+Looking at the interpretation and laws of other jurisdictions, it is clear that India lacks the essence of having a look-back period and provisions governing undervalued transactions. The continuation of the current regime would imply taking a literal interpretation of the provision without giving due regard to the fair market value of the transaction. Further, the term of the look back period also needs to be reconsidered by looking at laws of other jurisdictions like Germany, which would in turn contribute to the objective of having the Code in the first place. The legislation should further be amended to include the intent of the corporate debtor while entering into such a transaction, which can be proved through circumstantial evidence.

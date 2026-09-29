@@ -41,7 +41,7 @@ Two decisions shape the rest:
 ```
 site.yml                  names, links, areas of law, submission figures — edit this, not code
 content/pages/            the About the Blog and Submissions text, in Markdown
-content/posts/            published posts (written by the sync, committed)
+content/posts/            published posts, committed: the CBFL archive (see below) and whatever the sync writes
 content/previews/         previews of accepted posts — built during each run, never committed
 content/.previews-state   a fingerprint of the previews, so idle runs can skip the build
 content/specimens/        layout specimens; built only with --specimens, never published
@@ -58,8 +58,33 @@ build/manuscript.py       Word → Markdown, Notion blocks → Markdown
 build/screen.py           automatic first-round screening
 build/setup_notion.py     creates the Notion database
 build/selftest.py         offline checks of the whole pipeline
+build/import_cbfl.py      one-off: the CBFL Blog's Wix pages → content/posts
 .github/workflows/publish.yml
 ```
+
+## The CBFL archive
+
+The Centre's earlier blog, the CBFL Blog, was on Wix at cbflnludelhi.in. Its 201
+posts (2022–2025) were imported into `content/posts/` by `build/import_cbfl.py`,
+one folder each, in the same form as any other post. The old domain lapses on
+3 October 2026; a raw copy of every page is kept outside this repository, and the
+converter reads only that copy.
+
+- **Nothing is rewritten.** Text, links and tables are exactly the authors'. Titles
+  are as published, except that titles typed in capitals are set in title case, a
+  stray final full stop is dropped, and four titles Wix had cut short are complete.
+- **Headings.** The old guidelines told authors to mark headings by bolding or
+  underlining a line, so those lines became real headings (I., A., (i)).
+- **Authors and bios.** Each post's "The author is …" line is now its author note,
+  with the LinkedIn links it carried and their tracking parameters removed.
+- **One repeat left out.** *Huge Backlog of Cases in the Real Estate Sector* was
+  posted twice on the old site with identical text (26 July and 9 August 2023); the
+  earlier is kept.
+- **Provenance.** Each post says where it first appeared, and is cited to the
+  CBFL Blog with its original date. Front matter keeps `archive_url`.
+- **Safe from the sync.** Archive posts have no `notion_id`, so the Notion sync never
+  edits or removes them, and refuses to publish a Notion row over one.
+- Seven posts typed their own endnotes at the end of the text; they remain as written.
 
 ## Setting it up (once)
 

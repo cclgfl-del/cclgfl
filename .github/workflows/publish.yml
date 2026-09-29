@@ -121,6 +121,16 @@ jobs:
             echo "Nothing new in Notion; skipping build."
           fi
 
+      # Drawing a share card for every post takes a couple of minutes. Cards are
+      # cached by what they show, so each run redraws only the ones that changed.
+      - name: Restore share cards
+        if: steps.decide.outputs.deploy == 'true'
+        uses: actions/cache@v4
+        with:
+          path: .cache/cards
+          key: cards-${{ hashFiles('build/cards.py', 'build/guilloche.py') }}-${{ github.run_id }}
+          restore-keys: cards-${{ hashFiles('build/cards.py', 'build/guilloche.py') }}-
+
       - name: Build
         if: steps.decide.outputs.deploy == 'true'
         run: python build/build.py

@@ -34,6 +34,7 @@ from xml.sax.saxutils import escape as xml_escape
 import markdown
 import yaml
 from jinja2 import Environment, FileSystemLoader, StrictUndefined, select_autoescape
+from markupsafe import Markup, escape
 
 sys.path.insert(0, str(Path(__file__).parent))
 import cards  # noqa: E402
@@ -157,8 +158,23 @@ def make_env(cfg, posts, specimens_build):
     env.filters["shortdate"] = lambda d: "%d %s %d" % (d.day, MONTHS_SHORT[d.month - 1], d.year)
     env.filters["daymonth"] = lambda d: "%d %s" % (d.day, MONTHS_SHORT[d.month - 1])
     env.filters["iso"] = lambda d: d.isoformat()
+    env.filters["bio_html"] = bio_html
     env.filters["tojson_attr"] = lambda v: json.dumps(v, ensure_ascii=False)
     return env
+
+
+BIO_LINK = re.compile(r"\[([^\]]+)\]\((https?://[^)\s]+)\)")
+
+
+def bio_html(text):
+    """An author's bio as HTML: [name](url) becomes a link, all else is escaped."""
+    out, last = [], 0
+    for m in BIO_LINK.finditer(text):
+        out.append(escape(text[last:m.start()]))
+        out.append(Markup('<a href="%s" rel="noopener">%s</a>') % (m.group(2), m.group(1)))
+        last = m.end()
+    out.append(escape(text[last:]))
+    return Markup("").join(out)
 
 
 def write(path, text):
@@ -179,7 +195,9 @@ def read_next(post, posts, n=3):
 def post_context(cfg, post, posts, preview=False):
     path = "/preview/%s/" % post.preview_token if preview else "/post/%s/" % post.slug
     canonical = cfg["site_url"] + path
-    cite_text, cite_html = cite.bluebook(post, cfg["blog_name"], canonical)
+    # An imported post is cited to the blog it first appeared in.
+    cited_in = post.archive or cfg["blog_name"]
+    cite_text, cite_html = cite.bluebook(post, cited_in, canonical)
     return {
         "post": post,
         "path": path,
@@ -188,7 +206,8 @@ def post_context(cfg, post, posts, preview=False):
         "read_next": [] if preview else read_next(post, posts),
         "cite_text": cite_text,
         "cite_html": cite_html,
-        "card": cfg["site_url"] + "/cards/%s.png" % post.slug,
+        "card": cfg["site_url"] + "/cards/%s.jpg" % post.slug,
+        "cited_in": cited_in,
     }
 
 
@@ -205,8 +224,8 @@ def build_pages(env, cfg, posts, previews):
         base = OUT / "post" / post.slug
         write(base / "index.html", render("post.html", page="post", **ctx))
         publisher = "%s, %s" % (cfg["centre"], cfg["university"])
-        write(base / "cite.ris", cite.ris(post, cfg["blog_name"], publisher, ctx["canonical"]))
-        write(base / "cite.bib", cite.bibtex(post, cfg["blog_name"], ctx["canonical"]))
+        write(base / "cite.ris", cite.ris(post, ctx["cited_in"], publisher, ctx["canonical"]))
+        write(base / "cite.bib", cite.bibtex(post, ctx["cited_in"], ctx["canonical"]))
         copy_media(post.source_dir, base)
 
     for post in previews:
@@ -305,7 +324,7 @@ def build_patterns(posts):
 def build_cards(cfg, posts):
     seal = ROOT / "static" / "img" / "seal.png"
     for p in posts:
-        cards.build_card(p, cfg, seal, OUT / "cards" / ("%s.png" % p.slug), CACHE / "cards")
+        cards.build_card(p, cfg, seal, OUT / "cards" / ("%s.jpg" % p.slug), CACHE / "cards")
 
 
 def run_pagefind():
@@ -346,7 +365,7 @@ def main():
     args = ap.parse_args()
 
     cfg = load_config()
-    args.specimens = args.specimens or bool(cfg.get("review"))
+    args.specimens = args.specimens or bool(cfg.get("specimens"))
     print("Building %s → %s%s" % (cfg["blog_name"], cfg["site_url"], "  [review mode]" if cfg.get("review") else ""))
     try:
         posts, previews = load_all(cfg, args.specimens)

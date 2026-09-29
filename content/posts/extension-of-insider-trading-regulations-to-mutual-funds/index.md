@@ -1,0 +1,43 @@
+---
+title: Extension of Insider Trading Regulations to Mutual Funds
+slug: extension-of-insider-trading-regulations-to-mutual-funds
+authors:
+- Ajitesh Arya
+date: '2022-07-30'
+bios:
+- Ajitesh Arya is a fourth year student at NALSAR University of Law, Hyderabad
+archive: CBFL Blog
+archive_url: https://www.cbflnludelhi.in/post/extension-of-insider-trading-regulations-to-mutual-funds
+---
+
+**Keywords:** *Capital Markets, SEBI, Insider Trading*
+
+Recently, the Securities Exchange Board of India (SEBI) floated the [consultation paper](https://www.taxmann.com/research/company-and-sebi/top-story/222330000000021892/sebi-proposes-to-extend-applicability-of-insider-trading-norms-to-the-units-of-mutual-funds-news), proposing the expansion of the [SEBI (Prohibition on the](https://www.sebi.gov.in/legal/regulations/aug-2021/securities-and-exchange-board-of-india-prohibition-of-insider-trading-regulations-2015-last-amended-on-august-05-2021-_41717.html) [I](https://www.sebi.gov.in/legal/regulations/aug-2021/securities-and-exchange-board-of-india-prohibition-of-insider-trading-regulations-2015-last-amended-on-august-05-2021-_41717.html)[nsider](https://www.sebi.gov.in/legal/regulations/aug-2021/securities-and-exchange-board-of-india-prohibition-of-insider-trading-regulations-2015-last-amended-on-august-05-2021-_41717.html) [T](https://www.sebi.gov.in/legal/regulations/aug-2021/securities-and-exchange-board-of-india-prohibition-of-insider-trading-regulations-2015-last-amended-on-august-05-2021-_41717.html)[rading) Regulations, 2015](https://www.sebi.gov.in/legal/regulations/aug-2021/securities-and-exchange-board-of-india-prohibition-of-insider-trading-regulations-2015-last-amended-on-august-05-2021-_41717.html) (“Insider Trading Regulations”)to Mutual Funds. The move is interesting as it comes in the aftermath of the infamous Axis Bank Mutual Funds controversy that allegedly resulted in the loss of 465 Billion Dollars to the Mutual funds market. SEBI records its dismay over the practice of redemption of the mutual funds unit by the insiders using undisclosed information in the same consultation paper.
+
+In this paper, I argue that while such practices need to be dealt with, the attempt by SEBI to bring the Mutual Funds under the regulatory framework of insider trading regulations might be excessive, unprincipled, and practically difficult.
+
+## Background
+
+Currently, mutual funds are governed by the [SEBI (Mutual Funds) Regulation, 1996](https://www.sebi.gov.in/legal/regulations/aug-2021/securities-and-exchange-board-of-india-mutual-funds-regulations-1996-last-amended-on-november-09-2021-_41350.html) (“Mutual Funds Regulations”) and Directions and Circulars issued by SEBI from time to time. The consultation paper suggests some major changes in the Insider Trading Regulations in order to integrate mutual funds into the same. The definition of ‘Securities’ in the Regulations is proposed to be amended to strike down the exemption provided to mutual funds. It is proposed that ‘Trading’ will now include trading in the units of the mutual funds and the UPSI shall include information impacting the Net Asset Value (“NAV”) of the mutual funds. The connected persons for the purpose of such Mutual Funds are proposed to include any person associated with the mutual funds indirectly or indirectly in any capacity. This definition has a very wide import covering an array of parties.
+
+## Analysis
+
+## Principle of insider trading
+
+Previously, via various circulars, SEBI had placed restrictions on the fund managers and employees of these Asset Management Companies (AMCs) for dealing in the securities market. Initially, there were only restrictions on trading in the listed securities, but later in the year 2021, vide the [circular](https://www.sebi.gov.in/legal/circulars/oct-2021/investment-trading-in-securities-by-employees-and-board-members-of-amc-s-and-trustees-of-mutual-funds_53618.html) dated October 28, 2021, the employees, directors of AMCs, Board members of Trustees, including Access Persons (as defined in the said Circular), while in possession of certain sensitive information were prohibited from transacting in the units of the mutual funds.
+
+Keeping this in mind, a case can be made that the recent move by SEBI of bringing the mutual funds under the aegis of the Insider Trading Regulations is nothing but a move to consolidate the previously existing regulation to a large extent. However, this move is unprecedented and unprincipled.
+
+The traditional theory of insider trading does not squarely apply to the cases of trading in the units of mutual funds. The traditional theory as even reflected in Indian Insider Trading Regulations states that an insider employee is in the wrong if they trade in the security of the employer based on any material unpublished information. This theory would not apply to mutual funds for two major reasons. Firstly, mutual funds are traded in a different manner than other forms of securities. They are not traded in a secondary market and there is a lesser need for the regulators to be concerned with the information asymmetry. Secondly, the NAV of a mutual fund is directly derived from the values of the underlying securities and is not contingent upon insider information.
+
+The USA Court of Appeal of 7th circuit has also furthered the similar argument in the case of [*Securities And Exchange Commission v. Jilaine Bauer*](https://www.bloomberglaw.com/public/desktop/document/SEC_v_Jilaine_Bauer_Docket_No_1202860_7th_Cir_Aug_10_2012_Court_D/1). The case involved the redemption of the units of the Heartland Advisors by its Chief Compliance Officer; allegedly she had based her decision on insider information pertaining to the difficulties in assigning the fair market value. The SEC had brought a claim against her, and while the district court made a finding on insider dealing, the appellate court noted the difficulty in applying the traditional theories of insider trading to the fact situation and remanded the case back.
+
+## Enforcement Challenges
+
+At a secondary and a more practical level, there are going to be challenges with regard to the enforcement of insider trading regulations vis-à-vis mutual funds. The proposed definition of ‘connected person’ encompasses any person who was associated with the mutual fund in any capacity in the preceding two months. This is a very wide definition and therefore, covers a large number of people and entities. SEBI does not have the resources to be tracking all the parties involved. The difficulty further arises in collecting relevant evidence. The Supreme Court in the recent case of [*Balram Garg v. Securities Exchange Board of India*](https://main.sci.gov.in/supremecourt/2021/26746/26746_2021_9_1501_35070_Judgement_19-Apr-2022.pdf) has arguably raised the burden of proof on SEBI in cases of insider dealings. The SEBI now has to satisfy a *criminal* burden of proof for admitting the circumstantial evidence in insider trading cases. In light of the extended burden, the enforcement becomes harder especially in cases of mutual funds as they deal with a large number of parties on a regular basis.
+
+## Conclusion
+
+The paper does not attempt to downplay the issues of malpractice prevalent in the mutual funds market as highlighted by SEBI. [Prof. Bullard](https://scholarsbank.uoregon.edu/xmlui/bitstream/handle/1794/4700/843bullard.pdf?sequence=1&isAllowed=y) who has taken a strong stance against the extension of insider trading law on mutual funds has conceded that the Insider Trading Regulations might be efficient in dealing with the problem of front running. As front running directly impacts the securities, there is a stronger case for insider Trading Regulation there. Thus,in the author’s opinion, instead of looking for the recourse under Insider Trading Regulations, there is a need to clarify, elaborate, and strengthen the regulations on the front running. Currently, only regulation 4(2)(q) of [SEBI (Prohibition of Fraudulent and Unfair Trade Practices Relating to Securities Market), 2003](https://www.sebi.gov.in/legal/regulations/jan-2022/securities-and-exchange-board-of-india-prohibition-of-fraudulent-and-unfair-trade-practices-relating-to-securities-market-regulations-2003-last-amended-on-january-25-2022-_55604.html) deals with front running.
+
+Similarly, it has been argued that the abuse of the insider position by the fund managers and employees can be [curbed](https://brooklynworks.brooklaw.edu/bjcfcl/vol8/iss1/4/) strongly using internal checks and balances like codes of conduct, whistleblower mechanism, and extralegal practices. SEBI can look for strengthening the code of conduct enshrined in the Mutual Funds Regulations as an alternative.

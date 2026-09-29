@@ -1,0 +1,55 @@
+---
+title: The Changing Landscape of Buy-Back of Securities
+slug: the-changing-landscape-of-buy-back-of-securities
+authors:
+- Tejas Geetey
+date: '2023-03-05'
+bios:
+- The author is [Tejas Geetey](http://linkedin.com/in/tejas-geetey-71a5ba1b4), fourth year student at National Law University Odisha, Cuttack.
+archive: CBFL Blog
+archive_url: https://www.cbflnludelhi.in/post/the-changing-landscape-of-buy-back-of-securities
+---
+
+## Background
+
+Buy-back of securities has become the latest buzzword, as the Securities and Exchange Board of India (“SEBI**”**) in its board [meeting](https://www.sebi.gov.in/media/press-releases/dec-2022/sebi-board-meeting_66407.html) dated 20 December, 2022 approved a number of changes (“Amendments”) to the buy-back process which will be implemented in the SEBI (Buy-Back of Securities) [Regulations](https://www.sebi.gov.in/legal/regulations/aug-2021/securities-and-exchange-board-of-india-buy-back-of-securities-regulations-2018-last-amended-on-august-03-2021-_40327.html) 2018 (“Buy-Back Regulations”).
+
+One of the major reasons for the amendments to the buy-back regulations is to create a level playing field so as to protect the interest of the shareholders. In furtherance of improving the existing mechanism, a sub-group headed by KK Mistry was formed. Based on the report submitted, a [Consultation Paper](https://www.sebi.gov.in/reports-and-statistics/reports/nov-2022/review-of-sebi-buyback-of-securities-regulations-2018_65136.html) was issued by the SEBI intending to bring changes to the existing buy-back regulations through the proposed amendments. The author through this piece aims to understand the impact of the proposed amendments and analyse the burning question of whether the phasing out of buy-back of securities is a logical move or not.
+
+## Clearing the basics: What is buy-back?
+
+A buy-back implies the purchase of shares by a Company itself. A buy-back essentially cancels the shares issued in the market, thereby reversing the process. For instance, a company has issued ‘n’ number of shares to different entities and individuals. Purchasing those shares back will cancel out those ‘n’ shares and therefore reverse the process of issuance of those shares.
+
+Buy-back of securities are governed under [Section 68](https://www.mca.gov.in/content/dam/mca/pdf/CompaniesAct2013.pdf) of the Companies Act, 2023 which provides the process, threshold, and routes through which a buy-back arrangement can be undertaken by a company. Routes through which a buy-back can be undertaken include open market, tender offer, odd-lot holders process, and ESOP scheme. The step-by-step [process](https://www.taxmann.com/post/blog/what-is-a-share-buyback/) to be followed in every route is provided under the buy-back regulations.
+
+## Whether the phasing out of the stock exchange route is a decisive move?
+
+The [amendments](https://www.sebi.gov.in/sebi_data/meetingfiles/jan-2023/1672741305690_1.pdf) to the buy-back regulations, in a nutshell, aim to incentivise the tender offer route and put restrictions on the open market (stock exchange) route.
+
+One of the major amendments shall include the phase-out of the stock exchange process. As per the Consultation Paper, the threshold (maximum) limit for buy-back of 15% and time period of 6 months for the completion of the buy-back process will be gradually reduced over the next three years thereby removing the stock exchange route completely. The SEBI [cited](https://www.sebi.gov.in/reports-and-statistics/reports/nov-2022/review-of-sebi-buyback-of-securities-regulations-2018_65136.html) that the major reason for the phase-out was because the “entire trade” of a shareholder can get matched with the total purchase order thereby depriving equitable participation of other shareholders in the process. Till the [phase-out](https://indianexpress.com/article/explained/explained-economics/buybacks-why-sebi-is-phasing-out-the-stock-exchange-route-and-how-it-impacts-shareholders-8338614/) is completed, restrictive measures will also be imposed on the stock exchange process. This includes incorporating pricing restrictions and increasing the utilisation of amount from 50% to 75% set aside for buy-back.
+
+The author considers that the amendments are introduced in good light but the reasons cited by the SEBI could have been dealt with if only restrictive measures were [enforced](https://www.thehindubusinessline.com/opinion/sebi-buyback-rules-need-a-rethink/article66366276.ece). That is, the SEBI could put restrictions at the preliminary stage and not completely phase out the process as the problem cited by the SEBI that a shareholder’s entire trading getting matched is what makes the process [open](http://spparekh.blogspot.com/) and unique.. As there will be uncertainty as to the shareholder who accepts the purchase order of buy-back, therefore, no preference will be given to any shareholder making the process more transparent. If we carefully analyse, it can be inferred that what influenced the SEBI’s decision to introduce phase-out and restrictions is to make the stock exchange route fair and equitable and not just transparent.
+
+## Focusing on the tender offer route: A positive step?
+
+In respect of the tender offer route, barriers have been removed to make the process more efficient. One of the major amendments include removing the SEBI review process. Previously, after the approval of buy-back by special resolution, the company had to submit a draft letter of offer (“DLOF”) which would then be reviewed and sent to the shareholders. Now, the process of DLOF is set to be discarded which will streamline the existing cumbersome process.
+
+To attract companies to choose the tender offer route, the maximum limit of buy-back is increased from 25% to 40% of paid-up capital and free reserves. To reduce delay and maintain transparency, the company shall now be able to change the buy-back price one day before the offer is opened. Additionally, a company can now approve two buy-backs within the cooling period of 12 months as long as the 40% limit is not breached.
+
+The author considers that the proposed amendments to the tender offer route are a win-win situation for companies as well as shareholders as a major overhaul was required in the existing process. The tender offer ensures equitable participation of all shareholders, unlike the stock exchange route as the buy-back happens on a proportionate basis. For instance, if the number of shareholders willing to offer their shares is more than the proposed shares, then the shares will be purchased from each shareholder in proportion to their shares. Whereas, in the stock exchange route, one shareholder can accept the entire buy-back offer.
+
+Previously, a tender offer route might not have been preferred over a stock exchange route as the process was too cumbersome and lengthy. For instance, by reviewing and suggesting the changes to be made in the offer letter, SEBI is micromanaging the buy-back process and can affect the independent thought of the company. In this regard, increasing the threshold limit, reducing the timeline for completion of a buy-back to 18 days and removing the review process will create a considerably positive impact on the buy-back process. The amendments, therefore, have paved the way to make the tender offer process not only fair but also efficient.
+
+## Analysis of the amendments in ensuring a level playing field
+
+It is important to understand that the amendments in the buy-back regulations are considered because a company, in the process of a buy-back, can disregard the interest of shareholders. For instance, a company effectuated a buy-back as a strategic measure to increase the value of the promoter-shareholding and in the process failed to provide a fair platform to its shareholders. Recently, the NCLAT in [*Mahendra G Wadhwani v. Reed Relays*](https://cdn.ibclaw.online/Companiesact/NCLAT/2022/Mahendra+G.+Wadhwani+Vs.++Reed+Relays+%26+Electronics+India+Ltd.+-+NCLAT+New+Delhi.pdf) dealt with a similar issue as provided above. In the given matter, the Company used the securities premium account for the exit of shareholders through the reduction in share capital. The Bench gave the judgement that in the pretext of reduction of share capital, “the company undertook the buy-back route” as the securities premium account was formed for the utilisation in the buy-back process. In this judgement, what is important to note is that the allegations were levelled as the valuation of the shares was not correctly determined as provided in the valuer’s report.
+
+The author considers that it was at the discretion of the Company to consider/ not consider the valuer’s report but the company chose to ignore the report despite the valuation being incorrectly determined. Further, as decided in [*Nimish H Shah v. SEBI*](http://164.100.69.66/jupload/dhc/VKR/judgement/22-08-2019/VKR22082019CW77682019.pdf)*,* if the valuer’s report was also not present, then the Court could not have changed the valuation as it would go beyond judicial review.
+
+In this regard, the amendments aim to reduce problems like the above which can be exploited through the stock exchange or tender offer route. For instance, the stock exchange route can be potentially used as a catalyst in the form of insider trading. As it is uncertain to determine from whom and when the purchase order arrives, the company’s decision-makers can benefit their relatives by informing them about the buy-back before it is informed in public.
+
+Further, the impact has to be seen from both broader and narrow perspectives to understand its wide-term implications. If seen from a narrow perspective, then the SEBI has made only one viable [option](https://www.bqprime.com/opinion/sebi-chooses-its-favourite-buyback-route) left for a company intending to effectuate a buy-back i.e. the tender offer route. This is because not only the stock exchange but also the odd-lot holder route is set to be removed. Routes such as book-building or ESOP schemes are usually not preferred by every company. If seen from a broader perspective, the author agrees with the intention of the Board to provide a fair platform to shareholders and therefore, incentivising the tender offer route instead of the stock exchange route might be the correct choice.
+
+## Conclusion
+
+The amendments to be introduced shall bring a significant overhaul to the current buy-back regulations. Many companies may prefer the stock exchange route and therefore difficulties can be faced by companies to choose other routes but the amendments have ensured that the transition to other routes is smoother. From streamlining the mechanism to making the process more inclusive, the SEBI made sure that the well-being of the participating shareholders is not diminished. Further, the shift of tax burden to only the shareholders involved/taking part in the process is a positive step which will boost the confidence of shareholders in the implementation of the buy-back regulations.

@@ -623,6 +623,9 @@ a.plate:hover .plate__medal { opacity: 1; }
   padding: 1.5rem 0; border-bottom: 1px solid var(--rule); }
 .submit-cta p { margin: 0; font-style: italic; font-size: 1.125rem; color: var(--ink-2); }
 
+.archive-note { margin: 1.1rem 0 0; font-family: var(--sans); font-size: .8125rem; line-height: 1.5;
+  color: var(--ink-3); font-style: italic; }
+
 .contact__email { font-family: var(--display); font-weight: 600; font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.3rem); line-height: 1.15; }
 .contact__email a { overflow-wrap: anywhere; }
 .contact__address { font-style: normal; font-size: 1.25rem; line-height: 1.6; color: var(--ink) !important; }

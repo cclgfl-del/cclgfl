@@ -2,7 +2,9 @@
 
 1200 × 630, drawn with the same engraving as the post header so a shared link
 is recognisably the Centre's. Cards are cached by a hash of what they show, so
-an unchanged post is not redrawn on every build.
+an unchanged post is not redrawn on every build. They are JPEG, about 150 KB:
+WhatsApp shows no preview for an image over roughly 300 KB, and this line-work
+is 500 KB as a PNG.
 """
 
 import hashlib
@@ -101,11 +103,11 @@ def draw_card(post, cfg, seal_path):
 
 def build_card(post, cfg, seal_path, out_path, cache_dir):
     key = hashlib.sha256(json.dumps([
-        post.title, post.byline, post.engraving, post.date.isoformat(), cfg["blog_name"], cfg["university"], 4,
+        post.title, post.byline, post.engraving, post.date.isoformat(), cfg["blog_name"], cfg["university"], 5,
     ]).encode("utf-8")).hexdigest()[:20]
     cache_dir.mkdir(parents=True, exist_ok=True)
-    cached = cache_dir / ("%s.png" % key)
+    cached = cache_dir / ("%s.jpg" % key)
     if not cached.exists():
-        draw_card(post, cfg, seal_path).save(cached, optimize=True)
+        draw_card(post, cfg, seal_path).save(cached, "JPEG", quality=85, optimize=True, progressive=True, subsampling=0)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_bytes(cached.read_bytes())

@@ -223,6 +223,18 @@ def sync_checks(tmp):
     check("sync: the reason is written onto the Notion page",
           any(pid == "p-bad" and "Screening" in props for pid, props in api.updates))
 
+    # a post from the CBFL archive (no Notion id) is never overwritten by a Notion row
+    archived = S.POSTS / "archived-piece"
+    archived.mkdir()
+    (archived / "index.md").write_text("---\ntitle: Archived piece\ndate: 2023-01-01\n---\n\nOriginal text.\n", encoding="utf-8")
+    clash = notion_page("p-clash", "Archived piece", "Published")
+    api.pages = [pub, clash]
+    api.blocks["p-clash"] = body
+    changed, errors = S.sync(api, "db", cfg)
+    check("sync: a Notion row cannot overwrite an imported post",
+          "Original text." in (archived / "index.md").read_text(encoding="utf-8") and errors, str(errors))
+    api.pages = [pub, bad]
+
     api.pages = [acc]
     try:
         S.sync(api, "db", cfg)

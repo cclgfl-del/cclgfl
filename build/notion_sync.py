@@ -170,20 +170,34 @@ def sync(client, db_id, cfg, allow_empty=False, dry_run=False, force_previews=Fa
     def write_page(page, target, kind):
         """Build one page into `target`; on failure, report it on the page."""
         title = N.text(page, "title") or page["id"]
+
+        def fail(e):                                 # one bad row must not stop the rest
+            errors.append("%s: %s" % (title, e))
+            try:
+                client.update(page["id"], {N.FIELDS["screening"]: N.rich_text_value(
+                    "Could not publish (%s): %s" % (dt.date.today().isoformat(), e))})
+            except N.NotionError:
+                pass
+            return None
+
         with tempfile.TemporaryDirectory() as tmp:
             staging = Path(tmp) / "post"
             staging.mkdir()
             try:
                 meta = build_post(client, page, cfg, staging)
-            except Exception as e:                   # one bad row must not stop the rest
-                errors.append("%s: %s" % (title, e))
-                try:
-                    client.update(page["id"], {N.FIELDS["screening"]: N.rich_text_value(
-                        "Could not publish (%s): %s" % (dt.date.today().isoformat(), e))})
-                except N.NotionError:
-                    pass
-                return None
+            except Exception as e:
+                return fail(e)
             folder = target(meta)
+            # Posts that came from elsewhere (the CBFL archive, or written by hand)
+            # carry no Notion id, and a Notion row must never overwrite one.
+            if kind == "post" and (folder / "index.md").exists():
+                try:
+                    theirs, _ = split_front_matter((folder / "index.md").read_text(encoding="utf-8"), folder)
+                except Exception:                    # unreadable: not ours to replace
+                    theirs = {}
+                if theirs.get("notion_id") != page["id"]:
+                    return fail("the address /post/%s/ already belongs to another post; give this one a different Slug"
+                                % meta["slug"])
             replace_folder(staging, folder)
             return meta
 

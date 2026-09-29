@@ -50,7 +50,7 @@
     <header class="article__head">
       <p class="kicker" data-pagefind-ignore><a href="{{ url('/blogs/') }}">{{ cfg.blog_name }}</a></p>
       <h1 class="article__title" data-pagefind-meta="title">{{ post.title }}</h1>
-      <p class="article__stand">{{ post.standfirst }}</p>
+      {% if post.has_abstract %}<p class="article__stand">{{ post.standfirst }}</p>{% endif %}
       <div class="dateline" data-pagefind-ignore>
         <p class="dateline__who">{{ post.byline }}</p>
         <p class="dateline__meta">
@@ -58,6 +58,9 @@
           {{ m.meta_line(post) }}
         </p>
       </div>
+      {% if post.archive %}
+      <p class="archive-note" data-pagefind-ignore>First published on the {{ post.archive }} of the Centre for Business and Financial Laws, a predecessor of this Centre.</p>
+      {% endif %}
     </header>
 
     <div class="prose" data-prose>
@@ -67,7 +70,7 @@
     <footer class="article__foot" data-pagefind-ignore>
       {% if post.bios %}
       <section class="bios" aria-label="About the authors">
-        {% for b in post.bios %}<p>{{ b }}</p>{% endfor %}
+        {% for b in post.bios %}<p>{{ b | bio_html }}</p>{% endfor %}
       </section>
       {% endif %}
 

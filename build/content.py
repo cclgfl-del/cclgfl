@@ -67,6 +67,22 @@ def smarten(text):
     return html.unescape(re.sub(r"<[^>]+>", "", out))
 
 
+BIO_LINK = re.compile(r"\[([^\]]+)\]\((https?://[^)\s]+)\)")
+
+
+def smarten_bio(text):
+    """smarten() for a bio that may carry [name](url) links: the links survive,
+    the words around them are set with curly quotes."""
+    out, last = [], 0
+    for m in BIO_LINK.finditer(text):
+        out.append(smarten(text[last:m.start()]) if text[last:m.start()].strip() else text[last:m.start()])
+        out.append("[%s](%s)" % (smarten(m.group(1)), m.group(2)))
+        last = m.end()
+    tail = text[last:]
+    out.append(smarten(tail) if tail.strip() else tail)
+    return "".join(out)
+
+
 def as_list(value):
     if value is None:
         return []
@@ -265,6 +281,9 @@ class Post:
     specimen: bool = False
     preview_token: str = ""
     header_image: str = ""
+    has_abstract: bool = False  # False: the standfirst is only an excerpt, for cards and search results
+    archive: str = ""          # where the post first appeared, for imported posts
+    archive_url: str = ""
     extra: dict = field(default_factory=dict)
 
     @property
@@ -286,6 +305,24 @@ class Post:
         return a[0] if len(a) == 1 else "%s and %s" % (", ".join(a[:-1]), a[-1])
 
 
+def excerpt(plain, low=25, high=45, cut=32):
+    """The opening of a post for cards and search results, ending at a
+    sentence where one falls between `low` and `high` words; otherwise the
+    first `cut` words and an ellipsis."""
+    out = ""
+    for sentence in re.split(r"(?<=[.!?])\s+(?=[A-Z“‘\"'(\[])", plain):
+        joined = (out + " " + sentence).strip()
+        if out and len(joined.split()) > high:
+            break
+        out = joined
+        if len(out.split()) >= low:
+            break
+    if not out or len(out.split()) > high:
+        words = plain.split()
+        return " ".join(words[:cut]) + ("…" if len(words) > cut else "")
+    return out
+
+
 def load_post(folder, preview_token=""):
     index = folder / "index.md"
     meta, body = split_front_matter(index.read_text(encoding="utf-8"), index)
@@ -302,11 +339,11 @@ def load_post(folder, preview_token=""):
 
     r = render(body)
     standfirst = str(meta.get("standfirst") or "").strip()
+    has_abstract = bool(standfirst)
     if not standfirst:
         first = re.search(r"<p id=\"p1\">(.*?)<a class=\"pn\"", r["html"], re.S)
         plain = html.unescape(re.sub(r"<[^>]+>", "", first.group(1))) if first else ""
-        plain = re.sub(r"\s+", " ", plain).strip()
-        standfirst = " ".join(plain.split()[:32]) + ("…" if len(plain.split()) > 32 else "")
+        standfirst = excerpt(re.sub(r"\s+", " ", plain).strip())
 
     bios = meta.get("bios") or meta.get("bio") or []
     if isinstance(bios, str):
@@ -318,7 +355,7 @@ def load_post(folder, preview_token=""):
         authors=as_list(meta.get("authors")),
         date=date,
         standfirst=smarten(standfirst),
-        bios=[smarten(b) for b in bios],
+        bios=[smarten_bio(b) for b in bios],
         html=r["html"],
         words=r["words"],
         notes=r["notes"],
@@ -329,4 +366,7 @@ def load_post(folder, preview_token=""):
         specimen=bool(meta.get("specimen")),
         preview_token=preview_token,
         header_image=str(meta.get("header_image") or ""),
+        has_abstract=has_abstract,
+        archive=str(meta.get("archive") or ""),
+        archive_url=str(meta.get("archive_url") or ""),
     )

@@ -34,8 +34,8 @@ if(s.notes==='text')r.setAttribute('data-notes','text');}catch(e){}})();
 </head>
 <body class="page-{{ page }}">
 <a class="skip" href="#main">Skip to content</a>
-{% if specimens_build %}
-<p class="review-flag">Review build · includes specimen posts that are not published</p>
+{% if cfg.review %}
+<p class="review-flag">Review build · {% if specimens_build %}includes specimen posts that are not published{% else %}not yet public{% endif %}</p>
 {% endif %}
 
 <div class="strip">

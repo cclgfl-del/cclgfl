@@ -4,10 +4,14 @@
 #  nothing else for names, links or rules.
 # ─────────────────────────────────────────────────────────────────────────────
 
-# Review mode: publishes the specimen posts under a "Review build" banner and
-# tells search engines to index nothing, so the design can be shown before any
-# real post exists. Set to false for launch.
+# Review mode: shows a "Review build" banner and tells search engines to index
+# nothing, so the site can be shown to the Centre before it is public. Set to
+# false for launch.
 review: true
+
+# Also build content/specimens, the five layout specimens. They are not real
+# posts; leave this off unless you are reviewing the design itself.
+specimens: false
 
 blog_name: CCLGFL Blog
 centre: Centre for Corporate Law, Governance and Financial Laws
