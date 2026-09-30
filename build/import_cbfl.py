@@ -646,10 +646,12 @@ def main():
             leftover = out_root / f.name[:-len(".html.gz")]
             if leftover.is_dir() and not any(leftover.iterdir()):
                 leftover.rmdir()
-    # the old site posted one piece twice: keep the earlier, drop the repeat
+    # A repeat is dropped when a reader would see the same words: the old site's
+    # second copy of "Huge Backlog…" differs only in one link being split in two.
     seen, kept = {}, []
     for rec in sorted(records, key=lambda r: r["date"]):
-        key = (norm_title(rec["title"]), re.sub(r"\W+", "", rec["md"].lower())[:600])
+        words = re.sub(r"\]\([^)]*\)", "]", rec["md"])
+        key = (norm_title(rec["title"]), re.sub(r"[\W_]+", "", words.lower()))
         if key in seen:
             print("  duplicate of %s: dropped %s" % (seen[key], rec["slug"]))
             shutil.rmtree(out_root / rec["slug"], ignore_errors=True)
